@@ -26,6 +26,36 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "RateFlow – Currency Converter & Real-Time Exchange Rates",
+  "url": "https://rateflow.vercel.app/",
+  "description": "Free online currency converter with real-time exchange rates for 160+ currencies, including USD, EUR, GBP, AED, and crypto.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "RateFlow",
+    "url": "https://rateflow.vercel.app/"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://rateflow.vercel.app/tool/currency-converter-{from}-to-{to}/{from}-to-{to}"
+    },
+    "query-input": "required name=from required name=to"
+  }
+}
+</script>
+
 
     <style>
         :root {
