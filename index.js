@@ -58,8 +58,8 @@ app.get("/tool/:description/:slug",(req,res)=>{
         peragraph,
         canonical,
         keywords,
-         fromCurrency: from || 'USD',  // Default to USD if not provided
-        toCurrency: to || 'EUR'       // Default to EUR if not provided
+         fromCurrency: from?.toUpperCase() || 'USD',  // Default to USD if not provided
+        toCurrency: to?.toUpperCase() || 'EUR'       // Default to EUR if not provided
     };
     
    res.render('tool', data);
