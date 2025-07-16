@@ -32,8 +32,11 @@ res.render('contact');
 
 // handel url like tool/currency-converter-pounds-to-dollars?from=gbp&to=usd
 
-app.get("/tool/:slug",(req,res)=>{
-    const { from, to } = req.query;
+app.get("/tool/:description/:slug",(req,res)=>{
+    const {slug}  = req.params;
+    const [from, to] = slug.split("-to-"); 
+
+   
     console.log(`From: ${from}, To: ${to}`);
      
     let title = "Convert " + from + " to " + to + " | Currency Converter";
