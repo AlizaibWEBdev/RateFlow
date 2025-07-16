@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About RateFlow - The modern, free currency converter with real-time exchange rates. Learn about our mission to provide accurate financial tools.">
+    <meta name="keywords" content="about RateFlow, currency converter, exchange rates, forex tools, financial calculator">
+    <meta name="author" content="RateFlow">
+    <meta property="og:title" content="About RateFlow | Modern Currency Converter">
+    <meta property="og:description" content="Learn about RateFlow's mission to provide free, accurate currency conversion tools">
+    <meta property="og:url" content="https://rateflow.vercel.app/about">
+
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="icon.png">
+
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://rateflow.vercel.app/about">
+    <title>About RateFlow | Modern Currency Converter with Real-Time Exchange Rates</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --darkest: #020617;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--darkest);
+            color: var(--light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .subtitle {
+            color: var(--gray);
+            max-width: 700px;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-content {
+            background: var(--darker);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .about-section {
+            margin-bottom: 2rem;
+        }
+
+        .about-section p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-member {
+            background: var(--dark);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--primary);
+        }
+
+        .team-member h3 {
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--gray);
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--dark);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="logo">Rate<span>Flow</span></a>
+            <nav>
+                <a href="/">Converter</a>
+                <a href="/about" class="active">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <h1 class="fade-in">About RateFlow</h1>
+            <p class="subtitle fade-in delay-1">Our mission is to provide free, accurate currency conversion tools with real-time exchange rates for everyone.</p>
+
+            <div class="about-content fade-in delay-2">
+                <div class="about-section">
+                    <h2>Our Story</h2>
+                    <p>RateFlow was founded in 2023 with a simple goal: to create the most user-friendly, accurate, and free currency converter available online. Frustrated by cluttered financial tools and hidden fees in other services, our team set out to build something better.</p>
+                    <p>What started as a side project has grown into a trusted tool used by thousands of travelers, investors, and businesses worldwide every day. We're proud to remain completely free with no ads or premium paywalls.</p>
+                </div>
+
+                <div class="about-section">
+                    <h2>What Makes Us Different</h2>
+                    <ul class="features-list">
+                        <li><strong>Real-time rates:</strong> We update our exchange rates every minute from trusted financial sources</li>
+                        <li><strong>No hidden costs:</strong> 100% free with no registration required</li>
+                        <li><strong>Comprehensive coverage:</strong> 160+ currencies including cryptocurrencies</li>
+                        <li><strong>Privacy focused:</strong> We don't track or sell your conversion data</li>
+                        <li><strong>Always accessible:</strong> Lightweight design that works on any device</li>
+                    </ul>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-card fade-in delay-1">
+                        <div class="stat-number">160+</div>
+                        <div class="stat-label">Currencies Supported</div>
+                    </div>
+                    <div class="stat-card fade-in delay-2">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Rate Updates</div>
+                    </div>
+                    <div class="stat-card fade-in delay-3">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Free Service</div>
+                    </div>
+                   
+                </div>
+
+                <div class="about-section">
+                    <h2>Our Technology</h2>
+                    <p>RateFlow uses the Frankfurter API, one of the most reliable free exchange rate APIs available. Our systems automatically verify rate accuracy against multiple financial sources to ensure you always get the most current conversion data.</p>
+                    <p>The entire platform is built with modern web technologies for speed and reliability. We use:</p>
+                    <ul class="features-list">
+                        <li>React.js for our frontend interface</li>
+                        <li>Node.js for our backend services</li>
+                        <li>Vercel for global edge hosting</li>
+                        <li>Continuous integration for quality assurance</li>
+                    </ul>
+                </div>
+
+                <div class="about-section">
+                    <h2>Meet the Team</h2>
+                    <p>RateFlow is developed by a small, passionate team of financial technology enthusiasts and web developers.</p>
+                    
+                    <div class="team-grid">
+                        <div class="team-member fade-in">
+                            <img src="https://hireme.aziqdev.com/ame.png" alt="Sarah Chen">
+                            <h3>Alizaib </h3>
+                            <p>Founder & Lead Developer</p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>Our Commitment</h2>
+                    <p>We're committed to maintaining RateFlow as a free public service. As we grow, we'll continue to:</p>
+                    <ul class="features-list">
+                        <li>Add more currencies and financial tools</li>
+                        <li>Improve accuracy and update frequency</li>
+                        <li>Enhance accessibility features</li>
+                        <li>Protect user privacy</li>
+                        <li>Keep the platform ad-free</li>
+                    </ul>
+                    <p>Have suggestions or feedback? We'd love to hear from you on our <a href="/contact" style="color: var(--primary);">contact page</a>.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">RateFlow</div>
+                <div class="footer-links">
+                    <a href="/">Home</a>
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/contact">Contact</a>
+                </div>
+                <div class="footer-copyright">© 2023 RateFlow. All rights reserved.</div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

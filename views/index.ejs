@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+    content="RateFlow is the best free online currency converter with historical exchange rates. Instantly convert between over 160 currencies including USD, EUR, GBP, AED, AUD, JPY, and more.">
+<meta name="keywords"
+    content="currency converter, historical currency converter, currency converter by date, pound to dollar, aed to usd, aud to usd, british pound to usd, euro to usd, cad to usd, crypto currency converter, currency chart, real-time exchange rates, multi-currency converter">
+<meta name="author" content="RateFlow">
+
+<meta property="og:title" content="RateFlow | Best Online Currency Converter with Historical Rates">
+<meta property="og:description"
+    content="Free real-time currency converter supporting over 160 currencies. Convert GBP, AED, AUD, Euro, CAD, JPY and more — with historical charts.">
+<meta property="og:url" content="https://rateflow.vercel.app/">
+<meta property="og:type" content="website">
+
+<link rel="canonical" href="https://rateflow.vercel.app/">
+<title>RateFlow – Currency Converter & Real-Time Exchange Rates</title>
+
+<link rel="icon" type="image/x-icon" href="icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --darkest: #020617;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--darkest);
+            color: var(--light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--gray);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+
+        .converter-container {
+            background: var(--darker);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .converter-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .converter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .converter-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .last-updated {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .converter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .converter-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .currency-input {
+            position: relative;
+        }
+
+        .currency-input input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3.5rem;
+            background: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            color: var(--light);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .currency-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+        }
+
+        .currency-flag {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .currency-select {
+            position: relative;
+            margin-top: 0.5rem;
+        }
+
+        .currency-select select {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3.5rem;
+            background: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            color: var(--light);
+            font-size: 1rem;
+            appearance: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .currency-select select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+        }
+
+        .currency-select .fi {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        .currency-select::after {
+            content: '▼';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 0.7rem;
+            pointer-events: none;
+        }
+
+        .swap-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .swap-btn:hover {
+            background: var(--primary-dark);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .swap-btn i {
+            font-size: 1.2rem;
+        }
+
+        .result-container {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--dark);
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .conversion-rate {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+
+        .conversion-result {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .conversion-date {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        .error-message {
+            color: var(--error);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .popular-conversions {
+            margin-top: 4rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .popular-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .popular-card {
+            background: var(--darker);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .popular-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+        }
+
+        .popular-card a {
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .popular-card .fi {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .popular-card-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .popular-card-desc {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+            border-radius: 6px;
+            padding: 0.5rem;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="logo">Rate<span>Flow</span></a>
+        </header>
+
+        <main>
+            <h1 class="fade-in">Real-Time Currency Converter</h1>
+            <p class="subtitle fade-in delay-1">Convert between 160+ currencies with the latest exchange rates. Our free
+                tool provides accurate, up-to-date conversions for all your forex needs.</p>
+
+            <div class="converter-container fade-in delay-2">
+                <div class="converter-header">
+                    <div class="converter-title">Currency Converter</div>
+                    <div class="last-updated">Rates update every minute</div>
+                </div>
+
+                <div class="converter-grid">
+                    <div class="input-group">
+                        <label for="amount">Amount</label>
+                        <div class="currency-input">
+                            <input type="number" id="amount" value="1" min="0" step="0.01">
+                            <div class="currency-flag">
+                                <span class="fi" id="from-flag"></span>
+                            </div>
+                        </div>
+
+                        <div class="currency-select">
+                            <span class="fi" id="from-flag-select"></span>
+                            <select id="from-currency"></select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="converted-amount">Converted Amount</label>
+                        <div class="currency-input">
+                            <input type="number" id="converted-amount" readonly>
+                            <div class="currency-flag">
+                                <span class="fi" id="to-flag"></span>
+                            </div>
+                        </div>
+
+                        <div class="currency-select">
+                            <span class="fi" id="to-flag-select"></span>
+                            <select id="to-currency"></select>
+                        </div>
+                    </div>
+
+                    <button class="swap-btn" id="swap-btn" aria-label="Swap currencies">
+                        <i>⇄</i>
+                    </button>
+                </div>
+
+                <div class="result-container" id="result-container" style="display: none;">
+                    <div class="conversion-rate" id="conversion-rate"></div>
+                    <div class="conversion-result" id="conversion-result"></div>
+                    <div class="conversion-date" id="conversion-date"></div>
+                </div>
+
+                <div class="error-message" id="error-message" style="display: none;"></div>
+            </div>
+
+           
+
+
+            <div class="popular-conversions fade-in delay-3">
+    <h2 class="section-title">Popular Currency Conversions</h2>
+    <div class="popular-grid">
+        <div class="popular-card">
+            <a href="/tool/usd-to-eur-converter?from=usd&to=eur">
+                <span class="fi fi-us"></span>
+                <div>
+                    <div class="popular-card-title">USD to EUR</div>
+                    <div class="popular-card-desc">US Dollar to Euro</div>
+                </div>
+            </a>
+        </div>
+        <div class="popular-card">
+            <a href="/tool/eur-to-usd-converter?from=eur&to=usd">
+                <span class="fi fi-eu"></span>
+                <div>
+                    <div class="popular-card-title">EUR to USD</div>
+                    <div class="popular-card-desc">Euro to US Dollar</div>
+                </div>
+            </a>
+        </div>
+        <div class="popular-card">
+            <a href="/tool/gbp-to-usd-converter?from=gbp&to=usd">
+                <span class="fi fi-gb"></span>
+                <div>
+                    <div class="popular-card-title">GBP to USD</div>
+                    <div class="popular-card-desc">British Pound to US Dollar</div>
+                </div>
+            </a>
+        </div>
+        <div class="popular-card">
+            <a href="/tool/usd-to-gbp-converter?from=usd&to=gbp">
+                <span class="fi fi-us"></span>
+                <div>
+                    <div class="popular-card-title">USD to GBP</div>
+                    <div class="popular-card-desc">US Dollar to British Pound</div>
+                </div>
+            </a>
+        </div>
+        <div class="popular-card">
+            <a href="/tool/jpy-to-usd-converter?from=jpy&to=usd">
+                <span class="fi fi-jp"></span>
+                <div>
+                    <div class="popular-card-title">JPY to USD</div>
+                    <div class="popular-card-desc">Japanese Yen to US Dollar</div>
+                </div>
+            </a>
+        </div>
+        <div class="popular-card">
+            <a href="/tool/usd-to-jpy-converter?from=usd&to=jpy">
+                <span class="fi fi-us"></span>
+                <div>
+                    <div class="popular-card-title">USD to JPY</div>
+                    <div class="popular-card-desc">US Dollar to Japanese Yen</div>
+                </div>
+            </a>
+        </div>
+        <div class="popular-card">
+            <a href="/tool/aed-to-usd-converter?from=aed&to=usd">
+                <span class="fi fi-ae"></span>
+                <div>
+                    <div class="popular-card-title">AED to USD</div>
+                    <div class="popular-card-desc">UAE Dirham to US Dollar</div>
+                </div>
+            </a>
+        </div>
+        <div class="popular-card">
+            <a href="/tool/aud-to-usd-converter?from=aud&to=usd">
+                <span class="fi fi-au"></span>
+                <div>
+                    <div class="popular-card-title">AUD to USD</div>
+                    <div class="popular-card-desc">Australian Dollar to US Dollar</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+            <div class="seo-content" style="margin-top: 4rem; color: var(--gray); line-height: 1.8;">
+                <h2 style="color: var(--light); margin-bottom: 1rem;">About RateFlow Currency Converter</h2>
+                <p>RateFlow is a free online currency converter that provides real-time exchange rates for over 160
+                    global currencies. Our tool is designed to help individuals, travelers, and businesses quickly
+                    convert between currencies with accurate, up-to-date rates sourced from reliable financial data
+                    providers.</p>
+
+                <h3 style="color: var(--light); margin: 1.5rem 0 0.5rem;">Why Use Our Currency Converter?</h3>
+                <p>Unlike many currency converters that use outdated rates or have limited currency options, RateFlow
+                    offers:</p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Minute-by-minute updated exchange rates</li>
+                    <li>Comprehensive currency coverage including major, minor, and exotic currencies</li>
+                    <li>Clean, intuitive interface with dark mode for comfortable use</li>
+                    <li>No registration required - completely free to use</li>
+                    <li>Mobile-friendly design that works on all devices</li>
+                </ul>
+
+                <h3 style="color: var(--light); margin: 1.5rem 0 0.5rem;">How Currency Conversion Works</h3>
+                <p>Currency exchange rates fluctuate constantly based on global financial markets. Our converter uses
+                    mid-market rates (the midpoint between buy and sell rates) to give you the fairest conversion
+                    estimate. While we strive for accuracy, please note that actual exchange rates at banks or exchange
+                    services may include fees or different rates.</p>
+
+                <h3 style="color: var(--light); margin: 1.5rem 0 0.5rem;">Common Currency Questions</h3>
+                <p><strong>What's the strongest currency in the world?</strong> As of 2023, the Kuwaiti Dinar (KWD) is
+                    typically the highest-valued currency against the US Dollar.</p>
+                <p><strong>How often do exchange rates change?</strong> Forex markets operate 24/5, and rates can change
+                    by the second during market hours.</p>
+                <p><strong>Why do currency values fluctuate?</strong> Currency values are affected by interest rates,
+                    economic stability, political events, and market speculation.</p>
+            </div>
+
+            <div class="all-conversions" style="margin-top: 4rem;">
+                <h2 class="section-title">All Currency Converters</h2>
+                <p style="color: var(--gray); margin-bottom: 1.5rem;">You can check out our comprehensive list of
+                    currency converters:</p>
+
+              
+                    <div style="display: flex; gap:50px; flex-wrap: wrap;">
+
+    <ul style="list-style: none; margin-bottom: 1.5rem; break-inside: avoid;">
+        <li><a href="tool/currency-converter-pounds-to-dollars?from=gbp&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Pounds to Dollars</a></li>
+        <li><a href="tool/currency-converter-aed-to-usd?from=aed&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter AED to USD</a></li>
+        <li><a href="tool/currency-converter-aud-to-usd?from=aud&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter AUD to USD</a></li>
+        <li><a href="tool/currency-converter-australian-to-usd?from=aud&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Australian to USD</a></li>
+        <li><a href="tool/currency-converter-brazil-to-usd?from=brl&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Brazil to USD</a></li>
+        <li><a href="tool/currency-converter-british-pound-to-usd?from=gbp&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter British Pound to USD</a></li>
+        <li><a href="tool/currency-converter-british-pounds-to-dollars?from=gbp&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter British Pounds to Dollars</a></li>
+        <li><a href="tool/currency-converter-baht-to-usd?from=thb&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Baht to USD</a></li>
+        <li><a href="tool/currency-converter-british-pound-to-us-dollar?from=gbp&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter British Pound to US Dollar</a></li>
+    </ul>
+
+
+    <ul style="list-style: none; margin-bottom: 1.5rem; break-inside: avoid;">
+        <li><a href="tool/currency-converter-cad-to-usd?from=cad&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter CAD to USD</a></li>
+        <li><a href="tool/currency-converter-chf-to-usd?from=chf&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter CHF to USD</a></li>
+        <li><a href="tool/currency-converter-cny-to-usd?from=cny&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter CNY to USD</a></li>
+        <li><a href="tool/currency-converter-czk-to-usd?from=czk&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter CZK to USD</a></li>
+        <li><a href="tool/currency-converter-cop-to-usd?from=cop&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter COP to USD</a></li>
+        <li><a href="tool/currency-converter-costa-rica-to-usd?from=crc&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Costa Rica to USD</a></li>
+        <li><a href="tool/currency-converter-dollars-to-pounds?from=usd&to=gbp"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Dollars to Pounds</a></li>
+        <li><a href="tool/currency-converter-dollars-to-euros?from=usd&to=eur"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Dollars to Euros</a></li>
+        <li><a href="tool/currency-converter-dkk-to-usd?from=dkk&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter DKK to USD</a></li>
+    </ul>
+
+
+    <ul style="list-style: none; margin-bottom: 1.5rem; break-inside: avoid;">
+        <li><a href="tool/currency-converter-dollars-to-pesos?from=usd&to=mxn"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Dollars to Pesos</a></li>
+        <li><a href="tool/currency-converter-dubai-to-usd?from=aed&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Dubai to USD</a></li>
+        <li><a href="tool/currency-converter-dollar-to-yen?from=usd&to=jpy"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Dollar to Yen</a></li>
+        <li><a href="tool/currency-converter-dollar-to-rupee?from=usd&to=inr"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Dollar to Rupee</a></li>
+        <li><a href="tool/currency-converter-danish-krone-to-usd?from=dkk&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Danish Krone to USD</a></li>
+        <li><a href="tool/currency-converter-dirham-to-usd?from=aed&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Dirham to USD</a></li>
+        <li><a href="tool/currency-converter-euros-to-us-dollars?from=eur&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Euros to US Dollars</a></li>
+        <li><a href="tool/currency-converter-euro-to-pound?from=eur&to=gbp"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Euro to Pound</a></li>
+        <li><a href="tool/currency-converter-egp-to-usd?from=egp&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter EGP to USD</a></li>
+    </ul>
+
+
+    <ul style="list-style: none; margin-bottom: 1.5rem; break-inside: avoid;">
+        <li><a href="tool/currency-converter-gbp-to-usd?from=gbp&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter GBP to USD</a></li>
+        <li><a href="tool/currency-converter-gbp-to-us-dollar?from=gbp&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter GBP to US Dollar</a></li>
+        <li><a href="tool/currency-converter-gbp-to-eur?from=gbp&to=eur"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter GBP to EUR</a></li>
+        <li><a href="tool/currency-converter-gbp-to-dollar?from=gbp&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter GBP to Dollar</a></li>
+        <li><a href="tool/currency-converter-ghana-to-usd?from=ghs&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Ghana to USD</a></li>
+        <li><a href="tool/currency-converter-hkd-to-usd?from=hkd&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter HKD to USD</a></li>
+        <li><a href="tool/currency-converter-huf-to-usd?from=huf&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter HUF to USD</a></li>
+        <li><a href="tool/currency-converter-hong-kong-to-usd?from=hkd&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Hong Kong to USD</a></li>
+        <li><a href="tool/currency-converter-hk-to-usd?from=hkd&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter HK to USD</a></li>
+    </ul>
+    <ul style="list-style: none; margin-bottom: 1.5rem; break-inside: avoid;">
+        <li><a href="tool/currency-converter-jpy-to-usd?from=jpy&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter JPY to USD</a></li>
+        <li><a href="tool/currency-converter-jmd-to-usd?from=jmd&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter JMD to USD</a></li>
+        <li><a href="tool/currency-converter-japan-to-usd?from=jpy&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Japan to USD</a></li>
+        <li><a href="tool/currency-converter-jamaican-dollar-to-us-dollar?from=jmd&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Jamaican Dollar to US Dollar</a></li>
+        <li><a href="tool/currency-converter-jod-to-usd?from=jod&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter JOD to USD</a></li>
+        <li><a href="tool/currency-converter-jamaica-to-usd?from=jmd&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter Jamaica to USD</a></li>
+        <li><a href="tool/currency-converter-from-euro-to-usd?from=eur&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter from Euro to USD</a></li>
+        <li><a href="tool/currency-converter-from-yen-to-usd?from=jpy&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter from Yen to USD</a></li>
+        <li><a href="tool/currency-converter-from-pounds-to-dollars?from=gbp&to=usd"
+                style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency
+                Converter from Pounds to Dollars</a></li>
+    </ul>
+
+
+       <ul style="list-style: none; margin-bottom: 1.5rem; break-inside: avoid;">
+        <!-- Americas -->
+        <li><a href="tool/currency-converter-usd-to-cad?from=usd&to=cad" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from USD to CAD</a></li>
+        <li><a href="tool/currency-converter-mxn-to-brl?from=mxn&to=brl" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from MXN to BRL</a></li>
+        <li><a href="tool/currency-converter-ars-to-clp?from=ars&to=clp" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from ARS to CLP</a></li>
+        <li><a href="tool/currency-converter-cop-to-pen?from=cop&to=pen" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from COP to PEN</a></li>
+        <li><a href="tool/currency-converter-usd-to-uyu?from=usd&to=uyu" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from USD to UYU</a></li>
+        <li><a href="tool/currency-converter-gbp-to-chf?from=gbp&to=chf" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from GBP to CHF</a></li>
+        <li><a href="tool/currency-converter-eur-to-sek?from=eur&to=sek" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from EUR to SEK</a></li>
+        <li><a href="tool/currency-converter-nok-to-dkk?from=nok&to=dkk" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from NOK to DKK</a></li>
+        <li><a href="tool/currency-converter-cny-to-sgd?from=cny&to=sgd" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from CNY to SGD</a></li>
+        
+    </ul>
+    <ul style="list-style: none; margin-bottom: 1.5rem; break-inside: avoid;">
+        <li><a href="tool/currency-converter-pln-to-czk?from=pln&to=czk" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from PLN to CZK</a></li>
+        <li><a href="tool/currency-converter-jpy-to-krw?from=jpy&to=krw" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from JPY to KRW</a></li>
+        <li><a href="tool/currency-converter-huf-to-ron?from=huf&to=ron" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from HUF to RON</a></li>
+        <li><a href="tool/currency-converter-inr-to-thb?from=inr&to=thb" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from INR to THB</a></li>
+        <li><a href="tool/currency-converter-myr-to-php?from=myr&to=php" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from MYR to PHP</a></li>
+        <li><a href="tool/currency-converter-vnd-to-idr?from=vnd&to=idr" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from VND to IDR</a></li>
+        <li><a href="tool/currency-converter-aed-to-sar?from=aed&to=sar" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from AED to SAR</a></li>
+        <li><a href="tool/currency-converter-qar-to-omr?from=qar&to=omr" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from QAR to OMR</a></li>
+        <li><a href="tool/currency-converter-ils-to-egp?from=ils&to=egp" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from ILS to EGP</a></li>
+        <li><a href="tool/currency-converter-try-to-iqd?from=try&to=iqd" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from TRY to IQD</a></li>
+        <li><a href="tool/currency-converter-kwd-to-bhd?from=kwd&to=bhd" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from KWD to BHD</a></li>
+        <li><a href="tool/currency-converter-zar-to-ngn?from=zar&to=ngn" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from ZAR to NGN</a></li>
+        <li><a href="tool/currency-converter-egp-to-mad?from=egp&to=mad" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from EGP to MAD</a></li>
+        <li><a href="tool/currency-converter-kes-to-etb?from=kes&to=etb" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from KES to ETB</a></li>
+        <li><a href="tool/currency-converter-ghs-to-xof?from=ghs&to=xof" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from GHS to XOF</a></li>
+        <li><a href="tool/currency-converter-tzs-to-ugx?from=tzs&to=ugx" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from TZS to UGX</a></li>
+        <li><a href="tool/currency-converter-aud-to-nzd?from=aud&to=nzd" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from AUD to NZD</a></li>
+        <li><a href="tool/currency-converter-pgk-to-fjd?from=pgk&to=fjd" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from PGK to FJD</a></li>
+        <li><a href="tool/currency-converter-wst-to-top?from=wst&to=top" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from WST to TOP</a></li>
+        <li><a href="tool/currency-converter-usd-to-zar?from=usd&to=zar" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from USD to ZAR</a></li>
+        <li><a href="tool/currency-converter-eur-to-pln?from=eur&to=pln" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from EUR to PLN</a></li>
+        <li><a href="tool/currency-converter-gbp-to-aud?from=gbp&to=aud" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from GBP to AUD</a></li>
+        <li><a href="tool/currency-converter-chf-to-jpy?from=chf&to=jpy" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from CHF to JPY</a></li>
+        <li><a href="tool/currency-converter-cad-to-hkd?from=cad&to=hkd" style="color: var(--gray); text-decoration: none; display: block; padding: 0.25rem 0; transition: color 0.3s;">Currency Convert from CAD to HKD</a></li>
+    </ul>
+
+    
+
+
+
+</div>
+
+
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">RateFlow</div>
+                <div class="footer-links">
+                    <a href="/about">About</a>
+                    <a href="/privacy">Privacy Policy</a>
+   
+                    <a href="/contact">Contact</a>
+                </div>
+                <div class="footer-copyright">© 2023 RateFlow. All rights reserved.</div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // DOM Elements
+            const amountInput = document.getElementById('amount');
+            const convertedAmountInput = document.getElementById('converted-amount');
+            const fromCurrencySelect = document.getElementById('from-currency');
+            const toCurrencySelect = document.getElementById('to-currency');
+            const swapBtn = document.getElementById('swap-btn');
+            const resultContainer = document.getElementById('result-container');
+            const conversionRate = document.getElementById('conversion-rate');
+            const conversionResult = document.getElementById('conversion-result');
+            const conversionDate = document.getElementById('conversion-date');
+            const errorMessage = document.getElementById('error-message');
+            const fromFlag = document.getElementById('from-flag');
+            const toFlag = document.getElementById('to-flag');
+            const fromFlagSelect = document.getElementById('from-flag-select');
+            const toFlagSelect = document.getElementById('to-flag-select');
+
+            // Supported currencies with flags
+            const currencies = [
+                { code: 'USD', name: 'United States Dollar', flag: 'us' },
+                { code: 'EUR', name: 'Euro', flag: 'eu' },
+                { code: 'JPY', name: 'Japanese Yen', flag: 'jp' },
+                { code: 'GBP', name: 'British Pound', flag: 'gb' },
+                { code: 'AUD', name: 'Australian Dollar', flag: 'au' },
+                { code: 'CAD', name: 'Canadian Dollar', flag: 'ca' },
+                { code: 'CHF', name: 'Swiss Franc', flag: 'ch' },
+                { code: 'CNY', name: 'Chinese Yuan', flag: 'cn' },
+                { code: 'HKD', name: 'Hong Kong Dollar', flag: 'hk' },
+                { code: 'NZD', name: 'New Zealand Dollar', flag: 'nz' },
+                { code: 'SEK', name: 'Swedish Krona', flag: 'se' },
+                { code: 'KRW', name: 'South Korean Won', flag: 'kr' },
+                { code: 'SGD', name: 'Singapore Dollar', flag: 'sg' },
+                { code: 'NOK', name: 'Norwegian Krone', flag: 'no' },
+                { code: 'MXN', name: 'Mexican Peso', flag: 'mx' },
+                { code: 'INR', name: 'Indian Rupee', flag: 'in' },
+                { code: 'RUB', name: 'Russian Ruble', flag: 'ru' },
+                { code: 'ZAR', name: 'South African Rand', flag: 'za' },
+                { code: 'TRY', name: 'Turkish Lira', flag: 'tr' },
+                { code: 'BRL', name: 'Brazilian Real', flag: 'br' },
+                { code: 'AED', name: 'UAE Dirham', flag: 'ae' },
+                { code: 'SAR', name: 'Saudi Riyal', flag: 'sa' },
+                { code: 'THB', name: 'Thai Baht', flag: 'th' },
+                { code: 'IDR', name: 'Indonesian Rupiah', flag: 'id' },
+                { code: 'MYR', name: 'Malaysian Ringgit', flag: 'my' },
+                { code: 'PHP', name: 'Philippine Peso', flag: 'ph' },
+                { code: 'DKK', name: 'Danish Krone', flag: 'dk' },
+                { code: 'PLN', name: 'Polish Zloty', flag: 'pl' },
+                { code: 'HUF', name: 'Hungarian Forint', flag: 'hu' },
+                { code: 'CZK', name: 'Czech Koruna', flag: 'cz' },
+                { code: 'ILS', name: 'Israeli Shekel', flag: 'il' },
+                { code: 'CLP', name: 'Chilean Peso', flag: 'cl' },
+                { code: 'PKR', name: 'Pakistani Rupee', flag: 'pk' },
+                { code: 'EGP', name: 'Egyptian Pound', flag: 'eg' },
+                { code: 'COP', name: 'Colombian Peso', flag: 'co' },
+                { code: 'ARS', name: 'Argentine Peso', flag: 'ar' },
+                { code: 'VND', name: 'Vietnamese Dong', flag: 'vn' },
+                { code: 'NGN', name: 'Nigerian Naira', flag: 'ng' },
+                { code: 'BDT', name: 'Bangladeshi Taka', flag: 'bd' },
+                { code: 'KWD', name: 'Kuwaiti Dinar', flag: 'kw' },
+                { code: 'QAR', name: 'Qatari Riyal', flag: 'qa' },
+                { code: 'OMR', name: 'Omani Rial', flag: 'om' },
+                { code: 'JOD', name: 'Jordanian Dinar', flag: 'jo' },
+                { code: 'LKR', name: 'Sri Lankan Rupee', flag: 'lk' },
+                { code: 'UAH', name: 'Ukrainian Hryvnia', flag: 'ua' },
+                { code: 'RON', name: 'Romanian Leu', flag: 'ro' },
+                { code: 'PEN', name: 'Peruvian Sol', flag: 'pe' },
+                { code: 'BGN', name: 'Bulgarian Lev', flag: 'bg' },
+                { code: 'HRK', name: 'Croatian Kuna', flag: 'hr' },
+                { code: 'ISK', name: 'Icelandic Krona', flag: 'is' },
+                { code: 'JMD', name: 'Jamaican Dollar', flag: 'jm' },
+                { code: 'CRC', name: 'Costa Rican Colon', flag: 'cr' },
+                { code: 'DOP', name: 'Dominican Peso', flag: 'do' },
+                { code: 'GTQ', name: 'Guatemalan Quetzal', flag: 'gt' },
+                { code: 'UYU', name: 'Uruguayan Peso', flag: 'uy' },
+                { code: 'BOB', name: 'Bolivian Boliviano', flag: 'bo' },
+                { code: 'PYG', name: 'Paraguayan Guarani', flag: 'py' },
+                { code: 'NIO', name: 'Nicaraguan Cordoba', flag: 'ni' },
+                { code: 'HNL', name: 'Honduran Lempira', flag: 'hn' },
+                { code: 'BHD', name: 'Bahraini Dinar', flag: 'bh' },
+                { code: 'KZT', name: 'Kazakhstani Tenge', flag: 'kz' },
+                { code: 'TND', name: 'Tunisian Dinar', flag: 'tn' },
+                { code: 'MAD', name: 'Moroccan Dirham', flag: 'ma' },
+                { code: 'ETB', name: 'Ethiopian Birr', flag: 'et' },
+                { code: 'GHS', name: 'Ghanaian Cedi', flag: 'gh' },
+                { code: 'KES', name: 'Kenyan Shilling', flag: 'ke' },
+                { code: 'UGX', name: 'Ugandan Shilling', flag: 'ug' },
+                { code: 'TZS', name: 'Tanzanian Shilling', flag: 'tz' },
+                { code: 'MUR', name: 'Mauritian Rupee', flag: 'mu' },
+                { code: 'MVR', name: 'Maldivian Rufiyaa', flag: 'mv' },
+                { code: 'XAF', name: 'CFA Franc BEAC', flag: 'cm' },
+                { code: 'XOF', name: 'CFA Franc BCEAO', flag: 'sn' },
+                { code: 'XPF', name: 'CFP Franc', flag: 'pf' },
+                { code: 'ALL', name: 'Albanian Lek', flag: 'al' },
+                { code: 'AMD', name: 'Armenian Dram', flag: 'am' },
+                { code: 'AZN', name: 'Azerbaijani Manat', flag: 'az' },
+                { code: 'BAM', name: 'Bosnia-Herzegovina Convertible Mark', flag: 'ba' },
+                { code: 'BBD', name: 'Barbadian Dollar', flag: 'bb' },
+                { code: 'BMD', name: 'Bermudan Dollar', flag: 'bm' },
+                { code: 'BND', name: 'Brunei Dollar', flag: 'bn' },
+                { code: 'BSD', name: 'Bahamian Dollar', flag: 'bs' },
+                { code: 'BWP', name: 'Botswanan Pula', flag: 'bw' },
+                { code: 'BZD', name: 'Belize Dollar', flag: 'bz' },
+                { code: 'CDF', name: 'Congolese Franc', flag: 'cd' },
+                { code: 'DZD', name: 'Algerian Dinar', flag: 'dz' },
+                { code: 'FJD', name: 'Fijian Dollar', flag: 'fj' },
+                { code: 'GEL', name: 'Georgian Lari', flag: 'ge' },
+                { code: 'GIP', name: 'Gibraltar Pound', flag: 'gi' },
+                { code: 'GYD', name: 'Guyanaese Dollar', flag: 'gy' },
+                { code: 'IRR', name: 'Iranian Rial', flag: 'ir' },
+                { code: 'KGS', name: 'Kyrgystani Som', flag: 'kg' },
+                { code: 'KHR', name: 'Cambodian Riel', flag: 'kh' },
+                { code: 'LAK', name: 'Laotian Kip', flag: 'la' },
+                { code: 'LBP', name: 'Lebanese Pound', flag: 'lb' },
+                { code: 'LSL', name: 'Lesotho Loti', flag: 'ls' },
+                { code: 'LYD', name: 'Libyan Dinar', flag: 'ly' },
+                { code: 'MDL', name: 'Moldovan Leu', flag: 'md' },
+                { code: 'MKD', name: 'Macedonian Denar', flag: 'mk' },
+                { code: 'MMK', name: 'Myanma Kyat', flag: 'mm' },
+                { code: 'MNT', name: 'Mongolian Tugrik', flag: 'mn' },
+                { code: 'MOP', name: 'Macanese Pataca', flag: 'mo' },
+                { code: 'MZN', name: 'Mozambican Metical', flag: 'mz' },
+                { code: 'NAD', name: 'Namibian Dollar', flag: 'na' },
+                { code: 'NPR', name: 'Nepalese Rupee', flag: 'np' },
+                { code: 'PAB', name: 'Panamanian Balboa', flag: 'pa' },
+                { code: 'PGK', name: 'Papua New Guinean Kina', flag: 'pg' },
+                { code: 'RSD', name: 'Serbian Dinar', flag: 'rs' },
+                { code: 'RWF', name: 'Rwandan Franc', flag: 'rw' },
+                { code: 'SCR', name: 'Seychellois Rupee', flag: 'sc' },
+                { code: 'SDG', name: 'Sudanese Pound', flag: 'sd' },
+                { code: 'SLL', name: 'Sierra Leonean Leone', flag: 'sl' },
+                { code: 'SOS', name: 'Somali Shilling', flag: 'so' },
+                { code: 'SRD', name: 'Surinamese Dollar', flag: 'sr' },
+                { code: 'SVC', name: 'Salvadoran Colón', flag: 'sv' },
+                { code: 'SYP', name: 'Syrian Pound', flag: 'sy' },
+                { code: 'SZL', name: 'Swazi Lilangeni', flag: 'sz' },
+                { code: 'TTD', name: 'Trinidad and Tobago Dollar', flag: 'tt' },
+                { code: 'TWD', name: 'New Taiwan Dollar', flag: 'tw' },
+                { code: 'TMT', name: 'Turkmenistani Manat', flag: 'tm' },
+                { code: 'UZS', name: 'Uzbekistan Som', flag: 'uz' },
+                { code: 'VES', name: 'Venezuelan Bolívar', flag: 've' },
+                { code: 'VUV', name: 'Vanuatu Vatu', flag: 'vu' },
+                { code: 'WST', name: 'Samoan Tala', flag: 'ws' },
+                { code: 'XCD', name: 'East Caribbean Dollar', flag: 'ag' },
+                { code: 'YER', name: 'Yemeni Rial', flag: 'ye' },
+                { code: 'ZMW', name: 'Zambian Kwacha', flag: 'zm' },
+                { code: 'ZWL', name: 'Zimbabwean Dollar', flag: 'zw' }
+            ];
+
+            // Populate currency dropdowns
+            function populateCurrencyDropdowns() {
+                currencies.forEach(currency => {
+                    const option1 = document.createElement('option');
+                    option1.value = currency.code;
+                    option1.textContent = `${currency.code} - ${currency.name}`;
+
+                    const option2 = option1.cloneNode(true);
+
+                    fromCurrencySelect.appendChild(option1);
+                    toCurrencySelect.appendChild(option2);
+                });
+
+                // Set default values
+                fromCurrencySelect.value = 'USD';
+                toCurrencySelect.value = 'EUR';
+                updateFlags();
+            }
+
+            // Update flag icons
+            function updateFlags() {
+                const fromCurrency = fromCurrencySelect.value;
+                const toCurrency = toCurrencySelect.value;
+
+                const fromCurrencyData = currencies.find(c => c.code === fromCurrency);
+                const toCurrencyData = currencies.find(c => c.code === toCurrency);
+
+                if (fromCurrencyData) {
+                    fromFlag.className = `fi fi-${fromCurrencyData.flag}`;
+                    fromFlagSelect.className = `fi fi-${fromCurrencyData.flag}`;
+                }
+
+                if (toCurrencyData) {
+                    toFlag.className = `fi fi-${toCurrencyData.flag}`;
+                    toFlagSelect.className = `fi fi-${toCurrencyData.flag}`;
+                }
+            }
+
+
+
+            async function convertCurrency() {
+                const amount = parseFloat(amountInput.value);
+                const fromCurrency = fromCurrencySelect.value;
+                const toCurrency = toCurrencySelect.value;
+
+                if (isNaN(amount)) {
+                    errorMessage.textContent = 'Please enter a valid amount';
+                    errorMessage.style.display = 'block';
+                    resultContainer.style.display = 'none';
+                    return;
+                }
+
+                if (amount <= 0) {
+                    errorMessage.textContent = 'Amount must be greater than zero';
+                    errorMessage.style.display = 'block';
+                    resultContainer.style.display = 'none';
+                    return;
+                }
+
+                errorMessage.style.display = 'none';
+
+                try {
+                    // Show loading state
+                    conversionRate.textContent = 'Loading rates...';
+                    resultContainer.style.display = 'block';
+
+                    const response = await fetch(`https://api.frankfurter.app/latest?from=${fromCurrency}&to=${toCurrency}`);
+
+                    if (!response.ok) {
+                        throw new Error(`API error: ${response.status} ${response.statusText}`);
+                    }
+
+                    const data = await response.json();
+
+                    if (!data.rates || !data.rates[toCurrency]) {
+                        throw new Error('Invalid response format from API');
+                    }
+
+                    const rate = data.rates[toCurrency];
+                    const convertedAmount = amount * rate;
+
+                    // Update UI
+                    convertedAmountInput.value = convertedAmount.toFixed(4);
+                    conversionRate.textContent = `1 ${fromCurrency} = ${rate.toFixed(6)} ${toCurrency}`;
+                    conversionResult.textContent = `${amount.toFixed(2)} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`;
+                    conversionDate.textContent = `Exchange rate as of ${new Date(data.date).toLocaleDateString()}`;
+
+                    resultContainer.style.display = 'block';
+
+                } catch (error) {
+                    console.error('Currency conversion error:', error);
+
+                    // Handle specific error cases
+                    if (error.message.includes('Failed to fetch')) {
+                        errorMessage.textContent = 'Network error. Please check your connection.';
+                    } else if (error.message.includes('API error')) {
+                        errorMessage.textContent = 'Service temporarily unavailable. Please try again later.';
+                    } else {
+                        errorMessage.textContent = 'Error converting currency. Please try again.';
+                    }
+
+                    errorMessage.style.display = 'block';
+                    resultContainer.style.display = 'none';
+                }
+            }
+
+            function swapCurrencies() {
+                const tempCurrency = fromCurrencySelect.value;
+                fromCurrencySelect.value = toCurrencySelect.value;
+                toCurrencySelect.value = tempCurrency;
+
+                updateFlags();
+                convertCurrency();
+            }
+
+            // Event listeners
+            amountInput.addEventListener('input', convertCurrency);
+            fromCurrencySelect.addEventListener('change', () => {
+                updateFlags();
+                convertCurrency();
+            });
+            toCurrencySelect.addEventListener('change', () => {
+                updateFlags();
+                convertCurrency();
+            });
+            swapBtn.addEventListener('click', swapCurrencies);
+
+            // Initialize
+            populateCurrencyDropdowns();
+            convertCurrency();
+        });
+    </script>
+</body>
+
+</html>
