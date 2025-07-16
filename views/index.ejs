@@ -1061,72 +1061,91 @@
             }
 
 
-
             async function convertCurrency() {
-                const amount = parseFloat(amountInput.value);
-                const fromCurrency = fromCurrencySelect.value;
-                const toCurrency = toCurrencySelect.value;
+    const amount = parseFloat(amountInput.value);
+    const fromCurrency = fromCurrencySelect.value;
+    const toCurrency = toCurrencySelect.value;
 
-                if (isNaN(amount)) {
-                    errorMessage.textContent = 'Please enter a valid amount';
-                    errorMessage.style.display = 'block';
-                    resultContainer.style.display = 'none';
-                    return;
-                }
+    if (isNaN(amount)) {
+        errorMessage.textContent = 'Please enter a valid amount';
+        errorMessage.style.display = 'block';
+        resultContainer.style.display = 'none';
+        return;
+    }
 
-                if (amount <= 0) {
-                    errorMessage.textContent = 'Amount must be greater than zero';
-                    errorMessage.style.display = 'block';
-                    resultContainer.style.display = 'none';
-                    return;
-                }
+    if (amount <= 0) {
+        errorMessage.textContent = 'Amount must be greater than zero';
+        errorMessage.style.display = 'block';
+        resultContainer.style.display = 'none';
+        return;
+    }
 
-                errorMessage.style.display = 'none';
+    errorMessage.style.display = 'none';
 
-                try {
-                    // Show loading state
-                    conversionRate.textContent = 'Loading rates...';
-                    resultContainer.style.display = 'block';
+    // Show loading state
+    conversionRate.textContent = 'Loading rates...';
+    resultContainer.style.display = 'block';
 
-                    const response = await fetch(`https://api.frankfurter.app/latest?from=${fromCurrency}&to=${toCurrency}`);
+    try {
+        // Try Frankfurter API first
+        const frankfurterResponse = await fetch(`https://api.frankfurter.app/latest?from=${fromCurrency}&to=${toCurrency}`);
+        
+        if (!frankfurterResponse.ok) {
+            throw new Error(`Frankfurter API error: ${frankfurterResponse.status} ${frankfurterResponse.statusText}`);
+        }
 
-                    if (!response.ok) {
-                        throw new Error(`API error: ${response.status} ${response.statusText}`);
-                    }
+        const frankfurterData = await frankfurterResponse.json();
 
-                    const data = await response.json();
+        if (!frankfurterData.rates || !frankfurterData.rates[toCurrency]) {
+            throw new Error('Invalid response format from Frankfurter API');
+        }
 
-                    if (!data.rates || !data.rates[toCurrency]) {
-                        throw new Error('Invalid response format from API');
-                    }
+        const rate = frankfurterData.rates[toCurrency];
+        const convertedAmount = amount * rate;
 
-                    const rate = data.rates[toCurrency];
-                    const convertedAmount = amount * rate;
-
-                    // Update UI
-                    convertedAmountInput.value = convertedAmount.toFixed(4);
-                    conversionRate.textContent = `1 ${fromCurrency} = ${rate.toFixed(6)} ${toCurrency}`;
-                    conversionResult.textContent = `${amount.toFixed(2)} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`;
-                    conversionDate.textContent = `Exchange rate as of ${new Date(data.date).toLocaleDateString()}`;
-
-                    resultContainer.style.display = 'block';
-
-                } catch (error) {
-                    console.error('Currency conversion error:', error);
-
-                    // Handle specific error cases
-                    if (error.message.includes('Failed to fetch')) {
-                        errorMessage.textContent = 'Network error. Please check your connection.';
-                    } else if (error.message.includes('API error')) {
-                        errorMessage.textContent = 'Service temporarily unavailable. Please try again later.';
-                    } else {
-                        errorMessage.textContent = 'Error converting currency. Please try again.';
-                    }
-
-                    errorMessage.style.display = 'block';
-                    resultContainer.style.display = 'none';
-                }
+        // Update UI with Frankfurter data
+        updateConversionUI(amount, fromCurrency, toCurrency, rate, convertedAmount, frankfurterData.date);
+        
+    } catch (frankfurterError) {
+        console.error('Frankfurter API error:', frankfurterError);
+        
+        try {
+            // Fallback to ExchangeRate-API
+            const exchangeRateResponse = await fetch(`https://v6.exchangerate-api.com/v6/d77872369a1e1d375d7f989e/pair/${fromCurrency}/${toCurrency}`);
+            
+            if (!exchangeRateResponse.ok) {
+                throw new Error(`ExchangeRate-API error: ${exchangeRateResponse.status} ${exchangeRateResponse.statusText}`);
             }
+
+            const exchangeRateData = await exchangeRateResponse.json();
+
+            if (exchangeRateData.result !== "success" || !exchangeRateData.conversion_rate) {
+                throw new Error('Invalid response format from ExchangeRate-API');
+            }
+
+            const rate = exchangeRateData.conversion_rate;
+            const convertedAmount = amount * rate;
+
+            // Update UI with ExchangeRate-API data
+            updateConversionUI(amount, fromCurrency, toCurrency, rate, convertedAmount, new Date(exchangeRateData.time_last_update_utc).toISOString().split('T')[0]);
+            
+        } catch (exchangeRateError) {
+            console.error('ExchangeRate-API error:', exchangeRateError);
+            
+            // Handle specific error cases
+            if (frankfurterError.message.includes('Failed to fetch') || exchangeRateError.message.includes('Failed to fetch')) {
+                errorMessage.textContent = 'Network error. Please check your connection.';
+            } else if (frankfurterError.message.includes('API error') || exchangeRateError.message.includes('API error')) {
+                errorMessage.textContent = 'Service temporarily unavailable. Please try again later.';
+            } else {
+                errorMessage.textContent = 'Error converting currency. Please try again.';
+            }
+
+            errorMessage.style.display = 'block';
+            resultContainer.style.display = 'none';
+        }
+    }
+}
 
             function swapCurrencies() {
                 const tempCurrency = fromCurrencySelect.value;
