@@ -12,6 +12,15 @@ app.get('/', (req, res) => {
     res.render('index');    
 });
 
+app.get('/sitemap.xml', (req, res) => {
+  res.header('Content-Type', 'text/xml');
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Cache-Control', 'public, max-age=3600');
+  res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+
+
+
 
 app.get("/about", (req, res) => {
 res.render('about');
