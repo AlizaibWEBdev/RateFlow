@@ -9,6 +9,7 @@
   "routes": [
     {
       "src": "/sitemap.xml",
+      "dest":"/sitemap.xml",
       "headers": {
         "Content-Type": "text/xml",
         "Access-Control-Allow-Origin": "*",
