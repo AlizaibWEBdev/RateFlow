@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://rateflow.vercel.app/sitemap.xml
