@@ -1,427 +1,541 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://rateflow.vercel.app/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Popular Currency Converters -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-us-dollar-to-euro/usd-to-eur/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-us-dollar/eur-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-british-pound-to-us-dollar/gbp-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-us-dollar-to-british-pound/usd-to-gbp/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-japanese-yen-to-us-dollar/jpy-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-us-dollar-to-japanese-yen/usd-to-jpy/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-uae-dirham-to-us-dollar/aed-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-australian-dollar-to-us-dollar/aud-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
 
+    <!-- Most Searched Converters -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-pounds-to-dollars/gbp-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-aed-to-usd/aed-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-aud-to-usd/aud-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-british-pound-to-usd/gbp-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-dollars-to-pounds/usd-to-gbp/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-euros-to-us-dollars/eur-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-cad-to-usd/cad-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-jpy-to-usd/jpy-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-<url>
-  <loc>https://rateflow.vercel.app/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-us-dollar-to-euro/usd-to-eur/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-us-dollar/eur-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-british-pound-to-us-dollar/gbp-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-us-dollar-to-british-pound/usd-to-gbp/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-japanese-yen-to-us-dollar/jpy-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-us-dollar-to-japanese-yen/usd-to-jpy/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-uae-dirham-to-us-dollar/aed-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-australian-dollar-to-us-dollar/aud-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-pounds-to-dollars/gbp-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-aed-to-usd/aed-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-aud-to-usd/aud-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-british-pound-to-usd/gbp-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-dollars-to-pounds/usd-to-gbp/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-euros-to-us-dollars/eur-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-cad-to-usd/cad-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-jpy-to-usd/jpy-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-dirham-to-usd/aed-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-dubai-to-usd/aed-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-cny-to-usd/cny-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-dollar-to-rupee/usd-to-inr/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-dollar-to-yen/usd-to-jpy/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-baht-to-usd/thb-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-hkd-to-usd/hkd-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-sgd-to-usd/sgd-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-pound/eur-to-gbp/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-chf-to-usd/chf-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-brazil-to-usd/brl-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-cop-to-usd/cop-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-costa-rica-to-usd/crc-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-dkk-to-usd/dkk-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-egp-to-usd/egp-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-huf-to-usd/huf-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-jmd-to-usd/jmd-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-ghana-to-usd/ghs-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-dollars-to-pesos/usd-to-mxn/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-dollars-to-euros/usd-to-eur/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-from-euro-to-usd/eur-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-rub-to-usd/rub-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-uah-to-usd/uah-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-pln-to-usd/pln-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-ron-to-usd/ron-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-czk-to-usd/czk-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-pkr-to-usd/pkr-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-bdt-to-usd/bdt-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-lkr-to-usd/lkr-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-npr-to-usd/npr-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-sar-to-usd/sar-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-qar-to-usd/qar-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-ils-to-usd/ils-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-try-to-usd/try-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-ars-to-usd/ars-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-clp-to-usd/clp-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-pen-to-usd/pen-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-uyu-to-usd/uyu-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-nzd-to-usd/nzd-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-fjd-to-usd/fjd-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-pgk-to-usd/pgk-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-sek-to-usd/sek-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-nok-to-usd/nok-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-isk-to-usd/isk-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-usd-to-euro/usd-to-eur/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-usd-to-inr/usd-to-inr/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-usd-to-pkr/usd-to-pkr/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-usd-to-yen/usd-to-jpy/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-usd-to-peso/usd-to-mxn/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-inr/eur-to-inr/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-gbp/eur-to-gbp/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-aed/eur-to-aed/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-cad/eur-to-cad/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-gbp-to-inr/gbp-to-inr/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-gbp-to-eur/gbp-to-eur/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-gbp-to-aed/gbp-to-aed/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-gbp-to-pkr/gbp-to-pkr/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-aed-to-inr/aed-to-inr/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-sar-to-inr/sar-to-inr/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-qar-to-inr/qar-to-inr/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-rm-to-usd/myr-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-ngn-to-usd/ngn-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/tool/currency-converter-zar-to-usd/zar-to-usd/</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/about</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/privacy</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://rateflow.vercel.app/contact</loc>
-  <lastmod>2025-07-18T04:08:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
+    <!-- Middle East & Asia -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-dirham-to-usd/aed-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-dubai-to-usd/aed-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-cny-to-usd/cny-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-dollar-to-rupee/usd-to-inr/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-dollar-to-yen/usd-to-jpy/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-baht-to-usd/thb-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-hkd-to-usd/hkd-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-sgd-to-usd/sgd-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
 
+    <!-- Europe & Americas -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-pound/eur-to-gbp/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-chf-to-usd/chf-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-brazil-to-usd/brl-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-cop-to-usd/cop-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-costa-rica-to-usd/crc-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-dkk-to-usd/dkk-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-egp-to-usd/egp-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-huf-to-usd/huf-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
 
+    <!-- Other Popular Converters -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-jmd-to-usd/jmd-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-ghana-to-usd/ghs-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-dollars-to-pesos/usd-to-mxn/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-dollars-to-euros/usd-to-eur/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-from-euro-to-usd/eur-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Eastern European & CIS -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-rub-to-usd/rub-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-uah-to-usd/uah-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-pln-to-usd/pln-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-ron-to-usd/ron-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-czk-to-usd/czk-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- South Asia -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-pkr-to-usd/pkr-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-bdt-to-usd/bdt-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-lkr-to-usd/lkr-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-npr-to-usd/npr-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Middle East (Additional) -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-sar-to-usd/sar-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-qar-to-usd/qar-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-ils-to-usd/ils-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-try-to-usd/try-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Latin America (Additional) -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-ars-to-usd/ars-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-clp-to-usd/clp-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-pen-to-usd/pen-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-uyu-to-usd/uyu-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Pacific & Oceania -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-nzd-to-usd/nzd-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-fjd-to-usd/fjd-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-pgk-to-usd/pgk-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Nordic Countries -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-sek-to-usd/sek-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-nok-to-usd/nok-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-isk-to-usd/isk-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- USD to Major Currencies -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-usd-to-euro/usd-to-eur/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-usd-to-inr/usd-to-inr/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-usd-to-pkr/usd-to-pkr/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-usd-to-yen/usd-to-jpy/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-usd-to-peso/usd-to-mxn/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Euro Conversions -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-inr/eur-to-inr/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-gbp/eur-to-gbp/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-aed/eur-to-aed/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-euro-to-cad/eur-to-cad/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- GBP Conversions -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-gbp-to-inr/gbp-to-inr/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-gbp-to-eur/gbp-to-eur/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-gbp-to-aed/gbp-to-aed/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-gbp-to-pkr/gbp-to-pkr/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Middle East & Asia (High Demand) -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-aed-to-inr/aed-to-inr/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-sar-to-inr/sar-to-inr/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-qar-to-inr/qar-to-inr/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-rm-to-usd/myr-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- African Currencies -->
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-ngn-to-usd/ngn-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-egp-to-usd/egp-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/tool/currency-converter-zar-to-usd/zar-to-usd/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Other Pages -->
+    <url>
+        <loc>https://rateflow.vercel.app/about</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/privacy</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://rateflow.vercel.app/contact</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
 </urlset>
