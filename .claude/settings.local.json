@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"require\\('./index.js'\\)\")",
+      "Bash(curl -s http://localhost:3000/sitemap.xml)",
+      "Read(//c/Users/werg/Desktop/ratesflow/RateFlow/**)"
+    ]
+  }
+}

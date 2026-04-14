@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="bTRlMgrBbckq_jgRj0Eiw0ds2p2lBt0zADKkc6Ydch0" />
 <meta name="description"
-    content="online currency converter exchange rates. Instantly convert betweencurrencies including USD, EUR, GBP, AED, AUD, JPY, and more.">
+    content="Free real-time currency converter for 160+ currencies. Instantly convert USD, EUR, GBP, AED, AUD, JPY and more with live mid-market exchange rates. No ads, no sign-up required.">
 <meta name="keywords"
     content="currency converter, historical currency converter, currency converter by date, pound to dollar, aed to usd, aud to usd, british pound to usd, euro to usd, cad to usd, crypto currency converter, currency chart, real-time exchange rates, multi-currency converter">
 <meta name="author" content="RateFlow">
@@ -18,6 +18,10 @@
     content="Free real-time currency converter supporting over 160 currencies. Convert GBP, AED, AUD, Euro, CAD, JPY and more — with historical charts.">
 <meta property="og:url" content="https://rateflow.vercel.app/">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://rateflow.vercel.app/icon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RateFlow | Best Online Currency Converter">
+<meta name="twitter:description" content="Free real-time currency converter for 160+ currencies. Convert USD, EUR, GBP, AED and more with live rates — no ads, no sign-up.">
 
 <link rel="canonical" href="https://rateflow.vercel.app/">
 <title>RateFlow – Online Currency Converter & Live Exchange Rates</title>
@@ -56,6 +60,66 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "RateFlow",
+  "url": "https://rateflow.vercel.app/",
+  "logo": "https://rateflow.vercel.app/icon.png",
+  "description": "RateFlow is a free online currency converter providing real-time exchange rates for 160+ currencies.",
+  "sameAs": []
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate is RateFlow's currency converter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RateFlow uses live mid-market rates updated every minute from the Frankfurter API, which aggregates data from global financial markets. These are the real interbank rates — the same benchmark used by Reuters and Bloomberg."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many currencies does RateFlow support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RateFlow supports over 160 global currencies, including all major currencies like USD, EUR, GBP, AED, AUD, JPY, CAD, CHF, and many minor and exotic currencies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is RateFlow free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, RateFlow is completely free to use with no registration, no ads, and no paywalls. All features including real-time exchange rates and 160+ currency support are available at no cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do exchange rates change?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exchange rates change due to factors including central bank interest rate decisions, inflation rates, GDP growth, political stability, trade balances, and market speculation. The forex market operates 24 hours a day, 5 days a week, causing continuous rate fluctuations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the mid-market exchange rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The mid-market rate (also called the interbank rate) is the midpoint between the buying and selling prices of a currency in the wholesale forex market. It is the fairest benchmark rate and the one shown by RateFlow. Banks and exchange services typically offer worse rates, with the difference being their profit margin."
+      }
+    }
+  ]
+}
+</script>
 
     <style>
         :root {
@@ -507,6 +571,11 @@
     <div class="container">
         <header>
             <a href="/" class="logo">Rate<span>Flow</span></a>
+            <nav style="display:flex; gap:1.5rem; margin-top:0.5rem;">
+                <a href="/" style="color:var(--primary); text-decoration:none; font-size:0.95rem;">Converter</a>
+                <a href="/blog" style="color:var(--gray); text-decoration:none; font-size:0.95rem; transition:color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--gray)'">Blog</a>
+                <a href="/about" style="color:var(--gray); text-decoration:none; font-size:0.95rem; transition:color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--gray)'">About</a>
+            </nav>
         </header>
 
         <main>
@@ -861,15 +930,59 @@
 
 
 </div>
+        <div style="margin-top:4rem;">
+            <h2 class="section-title">Currency Exchange Guides</h2>
+            <p style="color:var(--gray); margin-bottom:1.5rem;">Learn how exchange rates work, how to convert currencies, and how to get the best rates.</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1rem;">
+                <a href="/blog/usd-to-eur-guide" style="text-decoration:none;">
+                    <div class="popular-card" style="height:100%;">
+                        <div class="popular-card-title" style="margin-bottom:0.4rem;">USD to EUR Guide</div>
+                        <div class="popular-card-desc">How to convert US Dollars to Euros — what drives the rate and how to get the best deal.</div>
+                    </div>
+                </a>
+                <a href="/blog/gbp-to-usd-guide" style="text-decoration:none;">
+                    <div class="popular-card" style="height:100%;">
+                        <div class="popular-card-title" style="margin-bottom:0.4rem;">GBP to USD Guide</div>
+                        <div class="popular-card-desc">Everything about the British Pound to US Dollar rate — history, drivers, and conversion tips.</div>
+                    </div>
+                </a>
+                <a href="/blog/aed-to-usd-guide" style="text-decoration:none;">
+                    <div class="popular-card" style="height:100%;">
+                        <div class="popular-card-title" style="margin-bottom:0.4rem;">AED to USD Guide</div>
+                        <div class="popular-card-desc">Why the UAE Dirham is pegged to the Dollar and how to convert AED to USD accurately.</div>
+                    </div>
+                </a>
+                <a href="/blog/why-exchange-rates-change" style="text-decoration:none;">
+                    <div class="popular-card" style="height:100%;">
+                        <div class="popular-card-title" style="margin-bottom:0.4rem;">Why Exchange Rates Change</div>
+                        <div class="popular-card-desc">7 key factors that drive currency values — interest rates, inflation, GDP, and more.</div>
+                    </div>
+                </a>
+                <a href="/blog/best-currency-converter-2025" style="text-decoration:none;">
+                    <div class="popular-card" style="height:100%;">
+                        <div class="popular-card-title" style="margin-bottom:0.4rem;">Best Currency Converters 2025</div>
+                        <div class="popular-card-desc">Ranked and reviewed: the most accurate free currency converter tools available today.</div>
+                    </div>
+                </a>
+                <a href="/blog/how-to-get-best-exchange-rate" style="text-decoration:none;">
+                    <div class="popular-card" style="height:100%;">
+                        <div class="popular-card-title" style="margin-bottom:0.4rem;">Get the Best Exchange Rate</div>
+                        <div class="popular-card-desc">How to avoid hidden fees and get the closest rate to mid-market when sending money abroad.</div>
+                    </div>
+                </a>
+            </div>
+            <p style="margin-top:1.5rem; text-align:center;"><a href="/blog" style="color:var(--primary); text-decoration:none; font-weight:500;">View all currency guides &rarr;</a></p>
+        </div>
+
         </main>
 
         <footer>
             <div class="footer-content">
                 <div class="footer-logo">RateFlow</div>
                 <div class="footer-links">
+                    <a href="/blog">Blog</a>
                     <a href="/about">About</a>
                     <a href="/privacy">Privacy Policy</a>
-   
                     <a href="/contact">Contact</a>
                 </div>
                 <div class="footer-copyright">© 2025 RateFlow. All rights reserved.</div>

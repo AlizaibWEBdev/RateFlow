@@ -14,16 +14,81 @@
         <meta property="og:description" content="<%= metaDescription %>">
         <meta property="og:url" content="<%= canonical %>">
         <meta property="og:type" content="website">
+        <meta property="og:image" content="https://rateflow.vercel.app/icon.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="<%= title %>">
+        <meta name="twitter:description" content="<%= metaDescription %>">
         <link rel="canonical" href="<%= canonical %>">
-        <title>
-                <%= title %>
-        </title>
+        <title><%= title %></title>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
                 rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="/icon.png">
 
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rateflow.vercel.app/" },
+            { "@type": "ListItem", "position": 2, "name": "<%= fromCurrency %> to <%= toCurrency %> Converter", "item": "<%= canonical %>" }
+          ]
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I convert <%= fromCurrency %> to <%= toCurrency %>?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Enter the amount in <%= fromCurrency %> in the converter above and select <%= toCurrency %> as the target currency. RateFlow will instantly show you the converted amount using live mid-market exchange rates updated every minute."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the current <%= fromCurrency %> to <%= toCurrency %> exchange rate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The <%= fromCurrency %> to <%= toCurrency %> exchange rate changes constantly during forex trading hours. Use the live converter above to see the current real-time rate sourced from global financial markets."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is this <%= fromCurrency %> to <%= toCurrency %> converter free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, RateFlow's currency converter is completely free to use. No registration, no ads, and no hidden fees. You get access to live exchange rates for 160+ currencies including <%= fromCurrency %> and <%= toCurrency %>."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How accurate is the <%= fromCurrency %> to <%= toCurrency %> rate on RateFlow?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "RateFlow uses live mid-market rates from the Frankfurter API, updated every minute. These are the real interbank rates — the same benchmark shown by financial data providers. Actual rates from banks or exchange services will include their own fees."
+              }
+            }
+          ]
+        }
+        </script>
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "<%= fromCurrency %> to <%= toCurrency %> Currency Converter – RateFlow",
+          "url": "<%= canonical %>",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        }
+        </script>
 
         <style>
                 :root {
@@ -475,9 +540,19 @@
         <div class="container">
                 <header>
                         <a href="/" class="logo">Rate<span>Flow</span></a>
+                        <nav style="display:flex; gap:1.5rem; margin-top:0.5rem;">
+                                <a href="/" style="color:var(--gray); text-decoration:none; font-size:0.95rem; transition:color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--gray)'">Converter</a>
+                                <a href="/blog" style="color:var(--gray); text-decoration:none; font-size:0.95rem; transition:color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--gray)'">Blog</a>
+                                <a href="/about" style="color:var(--gray); text-decoration:none; font-size:0.95rem; transition:color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--gray)'">About</a>
+                        </nav>
                 </header>
 
                 <main>
+                        <nav aria-label="Breadcrumb" style="display:flex; gap:0.5rem; align-items:center; font-size:0.85rem; color:var(--gray); margin-bottom:1.5rem; flex-wrap:wrap;">
+                                <a href="/" style="color:var(--gray); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--gray)'">Home</a>
+                                <span style="color:rgba(255,255,255,0.2);">›</span>
+                                <span style="color:var(--light);"><%= fromCurrency %> to <%= toCurrency %> Converter</span>
+                        </nav>
                         <h1 class="fade-in">
                                 <%= hading %>
                         </h1>
@@ -539,6 +614,31 @@
 
 
 
+
+                        <!-- SEO Content Section -->
+                        <div style="margin-top: 3rem; color: var(--gray); line-height: 1.8;">
+                                <h2 style="color: var(--light); margin-bottom: 1rem;">About the <%= fromCurrency %> to <%= toCurrency %> Exchange Rate</h2>
+                                <p>Use RateFlow's free <strong><%= fromCurrency %> to <%= toCurrency %> converter</strong> to get accurate, real-time exchange rates updated every minute. Our converter uses live mid-market rates — the true interbank rate — giving you a fair benchmark before any bank or transfer fees are applied.</p>
+
+                                <h3 style="color: var(--light); margin: 1.5rem 0 0.5rem;">How to Convert <%= fromCurrency %> to <%= toCurrency %></h3>
+                                <p>Enter any amount in the <strong><%= fromCurrency %></strong> field above. The converter will instantly calculate the equivalent in <strong><%= toCurrency %></strong> using the latest live rate. You can also swap currencies to convert <%= toCurrency %> back to <%= fromCurrency %>.</p>
+
+                                <h3 style="color: var(--light); margin: 1.5rem 0 0.5rem;">Why Use RateFlow?</h3>
+                                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                                        <li>Live mid-market rates updated every minute</li>
+                                        <li>160+ currencies supported globally</li>
+                                        <li>Completely free — no sign-up, no ads</li>
+                                        <li>Mobile-friendly interface for use anywhere</li>
+                                </ul>
+
+                                <h3 style="color: var(--light); margin: 1.5rem 0 0.5rem;">Frequently Asked Questions</h3>
+                                <p><strong>How accurate is this <%= fromCurrency %> to <%= toCurrency %> converter?</strong><br>
+                                RateFlow pulls live rates from the Frankfurter API, which aggregates data from global financial markets. Rates are refreshed every minute, making this one of the most up-to-date free converters available.</p>
+                                <p><strong>Why is the rate different from my bank?</strong><br>
+                                The rate shown is the mid-market (interbank) rate — the fairest benchmark. Banks and exchange services add a margin of 1–5% on top of this rate, which is how they profit from currency exchange. Use our rate as a benchmark to compare services.</p>
+                                <p><strong>Can I convert <%= toCurrency %> back to <%= fromCurrency %>?</strong><br>
+                                Yes — simply click the swap button (⇄) in the converter above to reverse the conversion direction instantly.</p>
+                        </div>
 
                         <div class="all-conversions" style="margin-top: 4rem;">
                                 <h2 class="section-title">All Currency Converters</h2>
@@ -713,9 +813,9 @@
                         <div class="footer-content">
                                 <div class="footer-logo">RateFlow</div>
                                 <div class="footer-links">
+                                        <a href="/blog">Blog</a>
                                         <a href="/about">About</a>
                                         <a href="/privacy">Privacy Policy</a>
-
                                         <a href="/contact">Contact</a>
                                 </div>
                                 <div class="footer-copyright">© 2025 RateFlow. All rights reserved.</div>
