@@ -1,0 +1,9 @@
+<section class="faq">
+    <h2><%= typeof faqTitle !== 'undefined' ? faqTitle : 'Frequently asked questions' %></h2>
+    <% faqs.forEach(function (f, i) { %>
+    <details<%= i === 0 ? ' open' : '' %>>
+        <summary><%= f.q %></summary>
+        <p><%= f.a %></p>
+    </details>
+    <% }) %>
+</section>

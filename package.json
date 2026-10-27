@@ -1,4 +1,15 @@
 {
+  "name": "rateflow",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "snapshot": "node scripts/snapshot-rates.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "ejs": "^3.1.10",

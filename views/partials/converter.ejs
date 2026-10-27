@@ -1,0 +1,37 @@
+<% var r0 = converter.payload.rates[converter.to] / converter.payload.rates[converter.from]; %>
+<form class="converter" id="converter" action="#" onsubmit="return false">
+    <div>
+        <label for="conv-amount">Amount</label>
+        <div class="field">
+            <input id="conv-amount" type="number" inputmode="decimal" min="0" step="any" value="<%= converter.amount %>">
+        </div>
+    </div>
+    <div class="conv-row">
+        <div>
+            <label for="conv-from">From</label>
+            <div class="field">
+                <span aria-hidden="true" class="fi fi-<%= fmt.flag(converter.from) %>" id="conv-from-flag"></span>
+                <select id="conv-from">
+                    <option value="<%= converter.from %>" selected><%= converter.from %> – <%= fmt.currencyName(converter.from) %></option>
+                </select>
+            </div>
+        </div>
+        <button class="swap" id="conv-swap" type="button" aria-label="Swap currencies">⇄</button>
+        <div>
+            <label for="conv-to">To</label>
+            <div class="field">
+                <span aria-hidden="true" class="fi fi-<%= fmt.flag(converter.to) %>" id="conv-to-flag"></span>
+                <select id="conv-to">
+                    <option value="<%= converter.to %>" selected><%= converter.to %> – <%= fmt.currencyName(converter.to) %></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="conv-result" aria-live="polite">
+        <div class="value" id="conv-value"><%= fmt.amount(converter.amount) %> <%= converter.from %> = <%= fmt.money(converter.amount * r0) %> <%= converter.to %></div>
+        <div class="line" id="conv-line">1 <%= converter.from %> = <%= fmt.rate(r0) %> <%= converter.to %> · 1 <%= converter.to %> = <%= fmt.rate(1 / r0) %> <%= converter.from %></div>
+    </div>
+    <a class="conv-link" id="conv-link" href="#" hidden>See the full rate page →</a>
+</form>
+<script type="application/json" id="rf-data"><%- jsonLd(converter.payload) %></script>
+<script src="/converter.js" defer></script>

@@ -1,0 +1,10 @@
+<% var act = typeof active !== 'undefined' ? active : ''; %>
+<header class="site-header">
+    <a href="/" class="logo">Rate<span>Flow</span></a>
+    <nav class="site-nav" aria-label="Main">
+        <a href="/"<%- act === 'home' ? ' aria-current="page"' : '' %>>Converter</a>
+        <a href="/currencies"<%- act === 'currencies' ? ' aria-current="page"' : '' %>>Currencies</a>
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+    </nav>
+</header>

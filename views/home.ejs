@@ -1,0 +1,68 @@
+<%- include('partials/head') %>
+<%- include('partials/header', { active: 'home' }) %>
+<main>
+    <h1>Currency Converter with Live Exchange Rates</h1>
+    <p class="lead">Convert between <%= converter.count %> currencies at today's mid-market rate (<%= date %>).
+        See the real rate first, then check how much your bank or exchange service is really charging.</p>
+
+    <div class="rate-hero">
+        <section class="card" aria-label="Currency converter">
+            <%- include('partials/converter') %>
+        </section>
+        <section class="card">
+            <h2 style="margin-top:0">Today's popular rates</h2>
+            <div class="table-wrap" style="border:0">
+                <table>
+                    <thead><tr><th>Pair</th><th class="num">Rate</th><th class="num">30 days</th></tr></thead>
+                    <tbody>
+                    <% popular.slice(0, 8).forEach(function (p) { %>
+                        <tr>
+                            <td><a href="<%= p.href %>"><%= p.from %> to <%= p.to %></a></td>
+                            <td class="num"><%= fmt.rate(p.rate) %></td>
+                            <td class="num"><% if (p.change == null) { %><span class="muted">—</span><% } else if (p.change === 0) { %><span class="badge">Stable</span><% } else { %><span class="badge <%= p.change >= 0 ? 'up' : 'down' %>"><%= fmt.pct(p.change) %></span><% } %></td>
+                        </tr>
+                    <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <h2>Popular currency conversions</h2>
+    <ul class="link-grid">
+        <% popular.forEach(function (p) { %>
+        <li><a href="<%= p.href %>"><span aria-hidden="true" class="fi fi-<%= fmt.flag(p.from) %>"></span>
+            <span><%= fmt.currencyName(p.from) %> to <%= fmt.currencyName(p.to) %><span class="sub">1 <%= p.from %> = <%= fmt.rate(p.rate) %> <%= p.to %></span></span></a></li>
+        <% }) %>
+    </ul>
+
+    <h2>Exchange rates by region</h2>
+    <% Object.keys(regions).forEach(function (region) { %>
+    <h3><%= region %></h3>
+    <ul class="link-grid">
+        <% regions[region].forEach(function (c) { %>
+        <li><a href="<%= pairs.currencyPath(c.code) %>"><span aria-hidden="true" class="fi fi-<%= c.flag %>"></span><span><%= c.name %> (<%= c.code %>)</span></a></li>
+        <% }) %>
+    </ul>
+    <% }) %>
+
+    <h2>How RateFlow works</h2>
+    <p>RateFlow shows the <strong>mid-market exchange rate</strong>: the midpoint between what buyers and sellers pay for a currency on the global market.
+        It is the rate you see on Google or Reuters, and the fairest benchmark for any conversion. Banks, card providers and airport kiosks usually add a margin of 1–5% on top of it.</p>
+    <p>Every currency pair page shows the live rate, a 30-day chart with the high, low and average, conversion tables for common amounts, and a breakdown of what you would actually receive from different types of provider.
+        For pegged currencies such as the UAE dirham, Saudi riyal or Qatari riyal, we explain the peg so you know whether a rate change is real or just a fee.</p>
+
+    <% if (posts.length) { %>
+    <h2>Guides</h2>
+    <ul class="link-grid">
+        <% posts.forEach(function (p) { %>
+        <li><a href="/blog/<%= p.slug %>"><span><%= p.title %><span class="sub"><%= p.readTime %></span></span></a></li>
+        <% }) %>
+    </ul>
+    <% } %>
+
+    <%- include('partials/faq', { faqs: faqs }) %>
+</main>
+<%- include('partials/footer') %>
+</body>
+</html>

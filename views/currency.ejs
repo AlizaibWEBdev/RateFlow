@@ -1,0 +1,63 @@
+<%- include('partials/head') %>
+<%- include('partials/header', { active: 'currencies' }) %>
+<main>
+    <%- include('partials/breadcrumbs', { crumbs: m.crumbs }) %>
+
+    <h1><span aria-hidden="true" class="fi fi-<%= m.c.flag %>"></span> <%= m.h1 %></h1>
+    <p class="lead">1 <%= m.c.name %> = <strong><%= fmt.rate(m.usd) %> US dollars</strong> on <%= m.date %>.
+        The <%= m.c.name %> is the currency of <%= m.c.country %><% if (m.c.peg) { %> and is <%= m.c.peg.label %><% } %>.</p>
+
+    <div class="rate-hero">
+        <section class="card">
+            <h2 style="margin-top:0">Currency facts</h2>
+            <div class="facts" style="grid-template-columns:1fr">
+                <dl>
+                    <dt>ISO code</dt><dd><%= m.code %></dd>
+                    <dt>Symbol</dt><dd><%= m.c.symbol %></dd>
+                    <dt>Used in</dt><dd><%= m.c.country %></dd>
+                    <dt>Central bank</dt><dd><%= m.c.bank %></dd>
+                    <dt>Subunit</dt><dd><%= m.c.subunit %></dd>
+                    <% if (m.c.aliases.length) { %><dt>Also called</dt><dd><%= m.c.aliases.join(', ') %></dd><% } %>
+                </dl>
+            </div>
+            <p class="small" style="margin-top:0.8rem"><%= m.c.note %></p>
+        </section>
+        <section class="card" aria-label="Currency converter">
+            <%- include('partials/converter') %>
+        </section>
+    </div>
+
+    <h2><%= m.code %> exchange rates today</h2>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Currency</th><th class="num">1 <%= m.code %> =</th><th class="num">Inverse</th><th class="num">30 days</th></tr></thead>
+            <tbody>
+            <% m.rows.forEach(function (r) { %>
+                <tr>
+                    <td><span aria-hidden="true" class="fi fi-<%= r.flag %>"></span>
+                        <% if (r.href) { %><a href="<%= r.href %>"><%= m.code %> to <%= r.code %></a><% } else { %><%= m.code %> to <%= r.code %><% } %>
+                        <span class="muted small">· <%= r.name %></span></td>
+                    <td class="num"><%= fmt.rate(r.rate) %> <%= r.code %></td>
+                    <td class="num"><% if (r.reverseHref) { %><a href="<%= r.reverseHref %>"><%= fmt.rate(r.inverse) %> <%= m.code %></a><% } else { %><%= fmt.rate(r.inverse) %> <%= m.code %><% } %></td>
+                    <td class="num"><% if (r.change == null) { %><span class="muted">—</span><% } else if (r.change === 0) { %><span class="badge">Stable</span><% } else { %><span class="badge <%= r.change >= 0 ? 'up' : 'down' %>"><%= fmt.pct(r.change) %></span><% } %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <p class="source-note">Mid-market rates on <%= m.date %>. 30-day change is based on European Central Bank reference rates where available.</p>
+
+    <h2>All <%= m.c.name %> converters</h2>
+    <ul class="link-grid">
+        <% m.all.forEach(function (p) { var other = p.from === m.code ? p.to : p.from; %>
+        <li><a href="<%= p.href %>"><span aria-hidden="true" class="fi fi-<%= fmt.flag(other) %>"></span>
+            <span><%= p.label %><span class="sub"><%= p.name %></span></span></a></li>
+        <% }) %>
+    </ul>
+
+    <%- include('partials/faq', { faqs: m.faqs, faqTitle: 'About the ' + m.c.name }) %>
+    <%- include('partials/sources') %>
+</main>
+<%- include('partials/footer') %>
+</body>
+</html>

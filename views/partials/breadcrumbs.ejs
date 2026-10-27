@@ -1,0 +1,7 @@
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+        <% crumbs.forEach(function (c, i) { %>
+        <li><% if (i < crumbs.length - 1) { %><a href="<%= c.href %>"><%= c.name %></a><% } else { %><span aria-current="page"><%= c.name %></span><% } %></li>
+        <% }) %>
+    </ol>
+</nav>

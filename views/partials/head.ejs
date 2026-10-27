@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= page.title %></title>
+    <meta name="description" content="<%= page.description %>">
+    <meta name="robots" content="<%= page.robots || 'index, follow' %>">
+    <% if (page.canonical) { %><link rel="canonical" href="<%= page.canonical %>"><% } %>
+    <meta name="google-site-verification" content="bTRlMgrBbckq_jgRj0Eiw0ds2p2lBt0zADKkc6Ydch0">
+    <meta property="og:site_name" content="RateFlow">
+    <meta property="og:title" content="<%= page.title %>">
+    <meta property="og:description" content="<%= page.description %>">
+    <% if (page.canonical) { %><meta property="og:url" content="<%= page.canonical %>"><% } %>
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="<%= BASE_URL %>/icon.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="<%= page.title %>">
+    <meta name="twitter:description" content="<%= page.description %>">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="/site.css">
+    <%# Fonts and flags are decorative: load them without blocking first paint. %>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css" crossorigin onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
+    </noscript>
+    <% (page.jsonLd || []).forEach(function (obj) { %>
+    <script type="application/ld+json"><%- jsonLd(obj) %></script>
+    <% }) %>
+</head>
+<body>
+<div class="container">

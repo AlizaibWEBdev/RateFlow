@@ -1,0 +1,20 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main>
+    <% if (typeof unavailable !== 'undefined' && unavailable) { %>
+    <h1>Exchange rates are temporarily unavailable</h1>
+    <p class="lead">We couldn't load the latest rates. Please try again in a few minutes.</p>
+    <% } else { %>
+    <h1>Page not found</h1>
+    <p class="lead">That page doesn't exist. If you were looking for a currency pair, try one of these:</p>
+    <% } %>
+    <ul class="link-grid" style="margin-top:1.5rem">
+        <% footerPairs.forEach(function (p) { %>
+        <li><a href="<%= pairs.pairPath(p[0], p[1]) %>"><span aria-hidden="true" class="fi fi-<%= fmt.flag(p[0]) %>"></span><span><%= p[0] %> to <%= p[1] %></span></a></li>
+        <% }) %>
+    </ul>
+    <p style="margin-top:1.5rem"><a href="/">Go to the currency converter</a> · <a href="/currencies">Browse all currencies</a></p>
+</main>
+<%- include('partials/footer') %>
+</body>
+</html>

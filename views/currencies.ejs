@@ -1,0 +1,29 @@
+<%- include('partials/head') %>
+<%- include('partials/header', { active: 'currencies' }) %>
+<main>
+    <%- include('partials/breadcrumbs', { crumbs: crumbs }) %>
+
+    <h1>World Currencies and Exchange Rates</h1>
+    <p class="lead">Value of each currency in US dollars on <%= date %>. Choose a currency to see its rates against every major currency, its central bank and whether it is pegged.</p>
+
+    <% Object.keys(regions).forEach(function (region) { %>
+    <h2><%= region %></h2>
+    <ul class="link-grid">
+        <% regions[region].forEach(function (c) { %>
+        <li><a href="<%= pairs.currencyPath(c.code) %>"><span aria-hidden="true" class="fi fi-<%= c.flag %>"></span>
+            <span><%= c.name %> (<%= c.code %>)<span class="sub">1 <%= c.code %> = <%= fmt.rate(c.usd) %> USD</span></span></a></li>
+        <% }) %>
+    </ul>
+    <% }) %>
+
+    <h2>Most searched conversions</h2>
+    <ul class="link-grid">
+        <% top.forEach(function (p) { %>
+        <li><a href="<%= pairs.pairPath(p[0], p[1]) %>"><span aria-hidden="true" class="fi fi-<%= fmt.flag(p[0]) %>"></span>
+            <span><%= p[0] %> to <%= p[1] %><span class="sub"><%= fmt.currencyName(p[0]) %> to <%= fmt.currencyName(p[1]) %></span></span></a></li>
+        <% }) %>
+    </ul>
+</main>
+<%- include('partials/footer') %>
+</body>
+</html>

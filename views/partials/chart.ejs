@@ -1,0 +1,20 @@
+<% if (m.chart) { %>
+<figure class="chart card">
+    <svg viewBox="0 0 <%= m.chart.width %> <%= m.chart.height %>" preserveAspectRatio="none" role="img"
+         aria-label="<%= m.F %> to <%= m.T %> rate over the past 30 days, from <%= fmt.rate(m.stats.first) %> to <%= fmt.rate(m.rate) %>">
+        <defs>
+            <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#6366f1" stop-opacity="0.35"/>
+                <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+            </linearGradient>
+        </defs>
+        <path class="area" d="<%= m.chart.area %>"/>
+        <path class="line" d="<%= m.chart.line %>"/>
+    </svg>
+    <div class="chart-axis">
+        <span><%= fmt.shortDate(m.stats.start) %></span>
+        <span>Low <%= fmt.rate(m.stats.low) %> · High <%= fmt.rate(m.stats.high) %></span>
+        <span><%= fmt.shortDate(m.stats.end) %></span>
+    </div>
+</figure>
+<% } %>

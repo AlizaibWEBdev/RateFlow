@@ -1,0 +1,57 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main>
+    <%- include('partials/breadcrumbs', { crumbs: crumbs }) %>
+
+    <h1>How RateFlow Sources and Calculates Exchange Rates</h1>
+    <p class="lead">RateFlow shows mid-market exchange rates so you can see what a currency is really worth before a bank or transfer service adds its margin.
+        This page explains exactly where our numbers come from, how often they change and where their limits are.</p>
+    <p class="small muted">Last reviewed <time datetime="<%= reviewed %>"><%= fmt.longDate(reviewed) %></time> · Latest rate update <time datetime="<%= updated %>"><%= fmt.longDate(updated) %></time></p>
+
+    <h2>What is the mid-market rate?</h2>
+    <p>The mid-market rate is the midpoint between the price buyers are paying and sellers are asking for a currency on the wholesale foreign-exchange market.
+        It is the benchmark used by financial data providers. You will almost never be offered exactly this rate as a consumer: banks, card networks,
+        exchange houses and airport kiosks add a margin (the "spread") and sometimes a separate fee. That is why every RateFlow pair page shows
+        what you would receive at typical margins of 1%, 3% and 5%.</p>
+
+    <h2>Where current rates come from</h2>
+    <p>Current rates for <%= count %> currencies come from <a href="https://www.exchangerate-api.com" rel="noopener">ExchangeRate-API</a>, which aggregates
+        data from central banks and commercial sources. We fetch rates quoted against the US dollar and calculate every other pair as a cross rate:
+        for example, AED to INR = (INR per USD) ÷ (AED per USD). The source updates once per day, and pages show the timestamp of the update they use.</p>
+
+    <h2>Where historical data comes from</h2>
+    <p>The 30-day charts, highs, lows, averages and daily tables use the <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" rel="noopener">European Central Bank's euro foreign exchange reference rates</a>,
+        accessed through the open-source <a href="https://frankfurter.dev" rel="noopener">Frankfurter</a> API. The ECB publishes these once per working day at around 16:00 CET
+        for about 30 major currencies.</p>
+    <p>For currencies the ECB does not publish, we only show history when the currency has an official fixed peg, and we derive it from that peg:</p>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Currency</th><th>Official arrangement used</th></tr></thead>
+            <tbody>
+            <% pegged.forEach(function (c) { %>
+                <tr><td><a href="<%= pairs.currencyPath(c.code) %>"><%= c.name %> (<%= c.code %>)</a></td><td><%= c.peg.label %></td></tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <p>Where neither applies, for example the Chilean peso or Nigerian naira, we show the current rate without a chart rather than guessing.</p>
+
+    <h2>Rounding</h2>
+    <p>Rates of 1 or more are shown to 4 decimal places. Rates below 1 are shown to 5 significant digits so worked examples multiply out correctly
+        (for example 0.27229 rather than 0.27). Money amounts are rounded to 2 decimal places.</p>
+
+    <h2>Known limitations</h2>
+    <ul style="margin-left:1.25rem;color:#cbd5e1">
+        <li>Rates are updated daily, not tick by tick. During fast-moving markets the live market rate may differ from what we show.</li>
+        <li>Some currencies have official and parallel market rates that differ significantly (for example the Argentine peso) or restricted trading (for example the Russian ruble). We show the official mid-market rate.</li>
+        <li>Mid-market rates are for information only and are not an offer to buy or sell currency.</li>
+    </ul>
+
+    <h2>Bank-margin comparisons</h2>
+    <p>The "what you would actually receive" tables on our pages use generic, typical margins (1%, 2%, 3% and 5%), not quotes from specific companies.
+        Always compare the total cost a provider quotes you, fee plus exchange-rate margin, against the mid-market rate.</p>
+    <p>Found an error? <a href="/contact">Contact us</a> and we will correct it.</p>
+</main>
+<%- include('partials/footer') %>
+</body>
+</html>

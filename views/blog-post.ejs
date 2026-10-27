@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<%= post.metaDescription %>">
-    <meta name="keywords" content="<%= post.keywords %>">
     <meta name="author" content="RateFlow">
     <meta property="og:title" content="<%= post.metaTitle %>">
     <meta property="og:description" content="<%= post.metaDescription %>">
@@ -15,7 +14,7 @@
     <meta name="twitter:description" content="<%= post.metaDescription %>">
     <link rel="canonical" href="<%= canonical %>">
     <title><%= post.metaTitle %></title>
-    <link rel="icon" type="image/x-icon" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -171,22 +170,23 @@
                     <div class="sidebar-card">
                         <h3>Popular Converters</h3>
                         <ul class="related-list">
-                            <li><a href="/tool/currency-converter-us-dollar-to-euro/usd-to-eur/">USD to EUR – Dollar to Euro</a></li>
-                            <li><a href="/tool/currency-converter-british-pound-to-us-dollar/gbp-to-usd/">GBP to USD – Pound to Dollar</a></li>
-                            <li><a href="/tool/currency-converter-uae-dirham-to-us-dollar/aed-to-usd/">AED to USD – Dirham to Dollar</a></li>
-                            <li><a href="/tool/currency-converter-euro-to-us-dollar/eur-to-usd/">EUR to USD – Euro to Dollar</a></li>
-                            <li><a href="/tool/currency-converter-australian-dollar-to-us-dollar/aud-to-usd/">AUD to USD – Australian Dollar</a></li>
-                            <li><a href="/tool/currency-converter-dollar-to-rupee/usd-to-inr/">USD to INR – Dollar to Rupee</a></li>
-                            <li><a href="/tool/currency-converter-cad-to-usd/cad-to-usd/">CAD to USD – Canadian Dollar</a></li>
+                            <li><a href="/convert/usd-to-eur">USD to EUR – Dollar to Euro</a></li>
+                            <li><a href="/convert/gbp-to-usd">GBP to USD – Pound to Dollar</a></li>
+                            <li><a href="/convert/aed-to-usd">AED to USD – Dirham to Dollar</a></li>
+                            <li><a href="/convert/eur-to-usd">EUR to USD – Euro to Dollar</a></li>
+                            <li><a href="/convert/aud-to-usd">AUD to USD – Australian Dollar</a></li>
+                            <li><a href="/convert/usd-to-inr">USD to INR – Dollar to Rupee</a></li>
+                            <li><a href="/convert/cad-to-usd">CAD to USD – Canadian Dollar</a></li>
+                            <li><a href="/currencies">All currencies →</a></li>
                         </ul>
                     </div>
 
                     <div class="sidebar-card">
                         <h3>More Guides</h3>
                         <ul class="related-list">
-                            <li><a href="/blog/usd-to-eur-guide">USD to EUR Conversion Guide</a></li>
-                            <li><a href="/blog/gbp-to-usd-guide">GBP to USD: Pound to Dollar Guide</a></li>
-                            <li><a href="/blog/aed-to-usd-guide">AED to USD: Dirham to Dollar Guide</a></li>
+                            <li><a href="/blog/usd-to-eur-guide">What Moves the Dollar–Euro Rate</a></li>
+                            <li><a href="/blog/gbp-to-usd-guide">Why GBP/USD Is Called "Cable"</a></li>
+                            <li><a href="/blog/aed-to-usd-guide">Why the Dirham Is Pegged to the Dollar</a></li>
                             <li><a href="/blog/why-exchange-rates-change">Why Exchange Rates Change</a></li>
                             <li><a href="/blog/best-currency-converter-2025">Best Currency Converters 2025</a></li>
                             <li><a href="/blog/how-to-get-best-exchange-rate">Get the Best Exchange Rate</a></li>
@@ -206,7 +206,7 @@
                     <a href="/privacy">Privacy Policy</a>
                     <a href="/contact">Contact</a>
                 </div>
-                <div class="footer-copyright">&copy; 2025 RateFlow. All rights reserved.</div>
+                <div class="footer-copyright">&copy; <%= year %> RateFlow. All rights reserved.</div>
             </div>
         </footer>
     </div>

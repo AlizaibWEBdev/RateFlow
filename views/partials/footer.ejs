@@ -1,0 +1,45 @@
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div>
+            <h2>Popular conversions</h2>
+            <ul>
+                <% footerPairs.slice(0, 6).forEach(function (p) { %>
+                <li><a href="<%= pairs.pairPath(p[0], p[1]) %>"><%= p[0] %> to <%= p[1] %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+        <div>
+            <h2>More conversions</h2>
+            <ul>
+                <% footerPairs.slice(6).forEach(function (p) { %>
+                <li><a href="<%= pairs.pairPath(p[0], p[1]) %>"><%= p[0] %> to <%= p[1] %></a></li>
+                <% }) %>
+            </ul>
+        </div>
+        <div>
+            <h2>Currencies</h2>
+            <ul>
+                <li><a href="/currency/usd">US Dollar (USD)</a></li>
+                <li><a href="/currency/eur">Euro (EUR)</a></li>
+                <li><a href="/currency/gbp">British Pound (GBP)</a></li>
+                <li><a href="/currency/aed">UAE Dirham (AED)</a></li>
+                <li><a href="/currency/pkr">Pakistani Rupee (PKR)</a></li>
+                <li><a href="/currencies">All currencies</a></li>
+            </ul>
+        </div>
+        <div>
+            <h2>RateFlow</h2>
+            <ul>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/methodology">Methodology</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    <p class="footer-note">Mid-market rates are for information only and do not include provider fees.
+        <a href="https://www.exchangerate-api.com" rel="noopener">Rates by Exchange Rate API</a>; 30-day history from European Central Bank reference rates via Frankfurter.
+        © <%= year %> RateFlow.</p>
+</footer>
+</div>

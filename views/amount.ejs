@@ -1,0 +1,89 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main>
+    <%- include('partials/breadcrumbs', { crumbs: m.crumbs }) %>
+
+    <h1><%= m.h1 %></h1>
+    <p class="lead"><%= m.intro %></p>
+    <p class="small muted">Updated <time datetime="<%= m.updated %>"><%= m.date %></time> · Mid-market rate · <a href="/methodology">How we source rates</a></p>
+
+    <div class="rate-hero">
+        <section class="card" aria-label="Result">
+            <div class="big-rate"><%= m.amt %> <%= m.F %> <span class="eq">=</span> <%= fmt.money(m.value) %> <%= m.T %></div>
+            <div class="rate-sub">
+                <%= m.amt %> <%= m.from.plural %> = <%= fmt.money(m.value) %> <%= m.to.plural %>
+                <% if (m.stats && !m.stats.flat) { %>
+                · <span class="badge <%= m.stats.change >= 0 ? 'up' : 'down' %>"><%= fmt.pct(m.stats.change) %> 30d</span>
+                <% } %>
+            </div>
+            <div class="stat-row">
+                <div class="stat"><div class="k">Rate</div><div class="v"><%= fmt.rate(m.rate) %></div></div>
+                <div class="stat"><div class="k">Inverse</div><div class="v"><%= fmt.rate(m.inverse) %></div></div>
+                <div class="stat"><div class="k">Updated</div><div class="v"><%= fmt.shortDate(m.updated) %></div></div>
+            </div>
+            <p class="source-note"><a href="<%= m.pairHref %>">Full <%= m.F %> to <%= m.T %> rate page →</a></p>
+        </section>
+        <section class="card" aria-label="Currency converter">
+            <%- include('partials/converter') %>
+        </section>
+    </div>
+
+    <h2>How much <%= m.T %> will you actually get for <%= m.amt %> <%= m.F %>?</h2>
+    <p>At the mid-market rate you would get <%= fmt.money(m.value) %> <%= m.T %>. Every 1% your provider adds costs you about <%= fmt.money(m.value / 100) %> <%= m.T %> on this amount:</p>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Provider type</th><th class="num">Margin</th><th class="num">You receive</th><th class="num">Hidden cost</th></tr></thead>
+            <tbody>
+            <% m.margins.forEach(function (r) { %>
+                <tr<%- r.margin === 0 ? ' class="current"' : '' %>>
+                    <td><%= r.label %></td>
+                    <td class="num"><%= r.margin %>%</td>
+                    <td class="num"><%= fmt.money(r.value) %> <%= m.T %></td>
+                    <td class="num"><%= r.margin ? fmt.money(r.lost) + ' ' + m.T : '—' %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <% if (m.range || m.chart) { %>
+    <h2>How the value changed over 30 days</h2>
+    <% if (m.range) { %><p><%= m.range %></p><% } %>
+    <%- include('partials/chart') %>
+    <% } %>
+    <% if (m.peg) { %><div class="callout"><p><%= m.peg %></p></div><% } %>
+
+    <h2>Nearby amounts</h2>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th><%= m.from.name %></th><th class="num"><%= m.to.name %></th></tr></thead>
+            <tbody>
+            <% m.nearby.forEach(function (r) { %>
+                <tr<%- r.current ? ' class="current"' : '' %>>
+                    <td><% if (r.href && !r.current) { %><a href="<%= r.href %>"><%= fmt.amount(r.amount) %> <%= m.F %></a><% } else { %><%= fmt.amount(r.amount) %> <%= m.F %><% } %></td>
+                    <td class="num"><%= fmt.money(r.value) %> <%= m.T %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <h2><%= m.amt %> <%= m.F %> in other currencies</h2>
+    <ul class="link-grid">
+        <% m.others.forEach(function (o) { %>
+        <li>
+            <% if (o.href) { %><a href="<%= o.href %>"><% } else { %><a href="<%= pairs.pairPath(m.F, o.code) %>" rel="nofollow"><% } %>
+                <span aria-hidden="true" class="fi fi-<%= fmt.flag(o.code) %>"></span>
+                <span><%= fmt.money(o.value) %> <%= o.code %><span class="sub"><%= o.name %></span></span>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+    <p style="margin-top:1rem">Converting the other way? See <a href="<%= m.reverseAmountHref %>"><%= m.amt %> <%= m.T %> to <%= m.F %></a>.</p>
+
+    <%- include('partials/faq', { faqs: m.faqs }) %>
+    <%- include('partials/sources') %>
+</main>
+<%- include('partials/footer') %>
+</body>
+</html>

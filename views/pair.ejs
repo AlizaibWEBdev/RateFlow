@@ -1,0 +1,159 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main>
+    <%- include('partials/breadcrumbs', { crumbs: m.crumbs }) %>
+
+    <h1><%= m.h1 %></h1>
+    <p class="lead"><%= m.answer %></p>
+    <p class="small muted">Updated <time datetime="<%= m.updated %>"><%= m.date %></time> · Mid-market rate · <a href="/methodology">How we source rates</a></p>
+
+    <div class="rate-hero">
+        <section class="card" aria-label="<%= m.F %> to <%= m.T %> rate">
+            <div class="big-rate">1 <%= m.F %> <span class="eq">=</span> <%= fmt.rate(m.rate) %> <%= m.T %></div>
+            <div class="rate-sub">
+                1 <%= m.T %> = <%= fmt.rate(m.inverse) %> <%= m.F %>
+                <% if (m.stats && !m.stats.flat) { %>
+                · <span class="badge <%= m.stats.change >= 0 ? 'up' : 'down' %>"><%= fmt.pct(m.stats.change) %> 30d</span>
+                <% } else if (m.stats) { %>
+                · <span class="badge">Stable</span>
+                <% } %>
+            </div>
+            <% if (m.stats && !m.stats.flat) { %>
+            <div class="stat-row">
+                <div class="stat"><div class="k">30-day high</div><div class="v"><%= fmt.rate(m.stats.high) %></div></div>
+                <div class="stat"><div class="k">30-day low</div><div class="v"><%= fmt.rate(m.stats.low) %></div></div>
+                <div class="stat"><div class="k">30-day avg</div><div class="v"><%= fmt.rate(m.stats.avg) %></div></div>
+            </div>
+            <% } %>
+        </section>
+        <section class="card" aria-label="Currency converter">
+            <%- include('partials/converter') %>
+        </section>
+    </div>
+
+    <% if (m.chart) { %>
+    <h2>Rate history: the last 30 days</h2>
+    <%- include('partials/chart') %>
+    <% } %>
+    <% if (m.trend) { %><p><%= m.trend %></p><% } %>
+    <% if (m.peg) { %><div class="callout"><p><%= m.peg %></p></div><% } %>
+
+    <% if (m.recent && m.stats && !m.stats.flat) { %>
+    <h2>Daily reference rates</h2>
+    <p><%= m.recentSummary %></p>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Date</th><th class="num">1 <%= m.F %> =</th><th class="num">Daily change</th></tr></thead>
+            <tbody>
+            <% m.recent.forEach(function (d) { %>
+                <tr>
+                    <td><time datetime="<%= d.date %>"><%= fmt.longDate(d.date) %></time></td>
+                    <td class="num"><%= fmt.rate(d.rate) %> <%= m.T %></td>
+                    <td class="num"><span class="badge <%= d.change > 0 ? 'up' : d.change < 0 ? 'down' : '' %>"><%= fmt.pct(d.change) %></span></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <% } %>
+
+    <h2><%= m.F %> to <%= m.T %> conversion table</h2>
+    <div class="two-col">
+        <div>
+            <h3><%= m.from.name %> to <%= m.to.name %></h3>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th><%= m.F %></th><th class="num"><%= m.T %></th></tr></thead>
+                    <tbody>
+                    <% m.tableFrom.forEach(function (r) { %>
+                        <tr>
+                            <td><% if (r.href) { %><a href="<%= r.href %>"><%= fmt.amount(r.amount) %> <%= m.F %></a><% } else { %><%= fmt.amount(r.amount) %> <%= m.F %><% } %></td>
+                            <td class="num"><%= fmt.money(r.value) %> <%= m.T %></td>
+                        </tr>
+                    <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <h3><%= m.to.name %> to <%= m.from.name %></h3>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th><%= m.T %></th><th class="num"><%= m.F %></th></tr></thead>
+                    <tbody>
+                    <% m.tableTo.forEach(function (r) { %>
+                        <tr>
+                            <td><% if (r.href) { %><a href="<%= r.href %>"><%= fmt.amount(r.amount) %> <%= m.T %></a><% } else { %><%= fmt.amount(r.amount) %> <%= m.T %><% } %></td>
+                            <td class="num"><%= fmt.money(r.value) %> <%= m.F %></td>
+                        </tr>
+                    <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <h2>How to convert by hand</h2>
+    <p>To convert <%= m.from.plural %> to <%= m.to.plural %>, multiply the <%= m.F %> amount by today's rate of <strong><%= fmt.rate(m.rate) %></strong>.
+        For example, <%= fmt.amount(m.markup.amount) %> <%= m.F %> × <%= fmt.rate(m.rate) %> = <%= fmt.money(m.markup.fair) %> <%= m.T %>.
+        To go back from <%= m.T %> to <%= m.F %>, multiply by <%= fmt.rate(m.inverse) %> or use the <a href="<%= m.reverseHref %>"><%= m.T %> to <%= m.F %> converter</a>.</p>
+
+    <h2>Are you getting a fair rate?</h2>
+    <p><%= m.markup.text %></p>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Exchange with</th><th class="num">You receive for <%= fmt.amount(m.markup.amount) %> <%= m.F %></th></tr></thead>
+            <tbody>
+                <tr><td>Mid-market rate (0%)</td><td class="num"><%= fmt.money(m.markup.fair) %> <%= m.T %></td></tr>
+                <tr><td>Low-cost transfer service (~1%)</td><td class="num"><%= fmt.money(m.markup.fair * 0.99) %> <%= m.T %></td></tr>
+                <tr><td>Typical bank (~3%)</td><td class="num"><%= fmt.money(m.markup.bank) %> <%= m.T %></td></tr>
+                <tr><td>Airport / hotel exchange (~5%+)</td><td class="num"><%= fmt.money(m.markup.fair * 0.95) %> <%= m.T %></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <% if (m.guides.length) { %>
+    <nav aria-label="Related guides" class="small">Further reading: <% m.guides.forEach(function (g, i) { %><%= i ? ' · ' : '' %><a href="<%= g.href %>"><%= g.title %></a><% }) %></nav>
+    <% } %>
+
+    <h2>About the two currencies</h2>
+    <div class="facts">
+        <% m.profiles.forEach(function (c) { if (c.compact) { %>
+        <section class="card">
+            <h3 style="margin-top:0"><span aria-hidden="true" class="fi fi-<%= c.flag %>"></span> <%= c.name %> (<%= c.code %>)</h3>
+            <p class="small">Symbol <%= c.symbol %> · issued by the <%= c.bank %>.</p>
+            <p class="small"><a href="<%= pairs.currencyPath(c.code) %>">All <%= c.name %> exchange rates →</a></p>
+        </section>
+        <% return; } %>
+        <section class="card">
+            <h3 style="margin-top:0"><span aria-hidden="true" class="fi fi-<%= c.flag %>"></span> <%= c.name %> (<%= c.code %>)</h3>
+            <dl>
+                <dt>Symbol</dt><dd><%= c.symbol %></dd>
+                <% if (c.country) { %><dt>Used in</dt><dd><%= c.country %></dd><% } %>
+                <% if (c.bank) { %><dt>Central bank</dt><dd><%= c.bank %></dd><% } %>
+                <% if (c.subunit) { %><dt>Subunit</dt><dd><%= c.subunit %></dd><% } %>
+                <% if (c.peg) { %><dt>Exchange regime</dt><dd><%= c.peg.label.charAt(0).toUpperCase() + c.peg.label.slice(1) %></dd><% } %>
+                <% if (c.aliases && c.aliases.length) { %><dt>Also called</dt><dd><%= c.aliases.join(', ') %></dd><% } %>
+            </dl>
+            <% if (c.note) { %><p class="small" style="margin-top:0.8rem"><%= c.note %></p><% } %>
+            <% if (c.bank) { %><p class="small"><a href="<%= pairs.currencyPath(c.code) %>">All <%= c.name %> exchange rates →</a></p><% } %>
+        </section>
+        <% }) %>
+    </div>
+
+    <%- include('partials/faq', { faqs: m.faqs, faqTitle: m.F + ' to ' + m.T + ' questions' }) %>
+    <%- include('partials/sources') %>
+
+    <% if (m.related.length) { %>
+    <h2>Related currency converters</h2>
+    <ul class="link-grid">
+        <% m.related.forEach(function (r) { %>
+        <li><a href="<%= r.href %>"><span aria-hidden="true" class="fi fi-<%= fmt.flag(r.from) %>"></span>
+            <span><%= r.from %> to <%= r.to %><span class="sub">1 <%= r.from %> = <%= fmt.rate(r.rate) %> <%= r.to %></span></span></a></li>
+        <% }) %>
+    </ul>
+    <% } %>
+</main>
+<%- include('partials/footer') %>
+</body>
+</html>
